@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interviewbit.binarysearch;
 
 import java.util.ArrayList;
@@ -11,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Dang
  */
-public class BinarySearchMatrix {
+public class MatrixSearch {
 
     public int searchMatrix(ArrayList<ArrayList<Integer>> a, int b) {
         int r = a.size();

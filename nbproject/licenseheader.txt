@@ -1,0 +1,7 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}This is my project containing my solutions to InterviewBit problems.
+<#if licenseLast??>
+${licenseLast}
+</#if>

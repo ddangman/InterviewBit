@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package interviewbit;
 
-import interviewbit.binarysearch.BinarySearchMatrix;
-import interviewbit.math.UnderKAndNDigits;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -16,11 +9,33 @@ import java.util.Arrays;
  */
 public class InterviewBit {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
+
+    }
+
+    public static ArrayList<ArrayList<Integer>> generateMatrix(int n) {
+        ArrayList<ArrayList<Integer>> a = new ArrayList<ArrayList<Integer>>();
+        int k = 1;
+        for (int i = 0; i < n; i++) {
+            ArrayList<Integer> row = new ArrayList<Integer>();
+            for (int j = 0; j < n; j++) {
+                row.add(k);
+                k++;
+            }
+            a.add(row);
+        }
+        return a;
+    }
+
+    public static void printMatrix(ArrayList<ArrayList<Integer>> m) {
+        for (int i = 0; i < m.size(); i++) {
+            for (int j = 0; j < m.get(i).size(); j++) {
+                System.out.print(m.get(i).get(j));
+                System.out.print(" ");
+            }
+            System.out.println("");
+        }
     }
 
     public static void test3() {
@@ -43,8 +58,6 @@ public class InterviewBit {
         matrix.add(row7);
 //        matrix.add(row8);
 //        matrix.add(row9);
-        BinarySearchMatrix sol = new BinarySearchMatrix();
-        System.out.println(sol.searchMatrix(matrix, 92));
     }
 
 }
