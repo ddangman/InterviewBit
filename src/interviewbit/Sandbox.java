@@ -5,8 +5,6 @@
  */
 package interviewbit;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -25,16 +23,16 @@ public class Sandbox {
             System.out.println(c);
             int cCount = set.containsKey(c) ? set.get(c) + 1 : 1;
             set.put(c, cCount);
-            for ( Entry<Character, Integer> e : set.entrySet()) {
+            for (Entry<Character, Integer> e : set.entrySet()) {
                 if (e.getKey() < c) {
                     long p = run * e.getValue() / cCount;
                     System.out.print(e.getKey());
                     System.out.println(" " + p);
                     rank += p;
-                }                
+                }
             }
-            run *=a.length()-i;
-            run/=cCount;
+            run *= a.length() - i;
+            run /= cCount;
         }
         return (int) rank;
     }

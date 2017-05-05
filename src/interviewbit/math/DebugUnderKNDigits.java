@@ -1,5 +1,5 @@
 /*
- * This is my project containing my solutions to InterviewBit problems.
+ * This code was created by another InterviewBit user. Corrections are made by me.
  */
 package interviewbit.math;
 
