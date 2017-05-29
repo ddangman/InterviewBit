@@ -33,6 +33,7 @@ public class RepeatMissingNumberArray {
         // so any set bit of xor can be used to divide out ( using bitwise AND )
         // missing or non-nullified elements
         int rsb = xor & ~(xor - 1); // get rightmost set bit (rightmost 1) of xor
+                                    // alternatively: rsb = xor & (-xor)
         int x = 0;
         int y = 0;
 

@@ -1,7 +1,7 @@
 /*
  * This is my project containing my solutions to InterviewBit problems.
  */
-package interviewbit;
+package utilities;
 
 import java.util.ArrayList;
 
@@ -13,8 +13,9 @@ import java.util.ArrayList;
 public class MatrixUtilities {
 
     /**
-     * Generates a square matrix of input size holding counting numbers
-     * starting from 1.
+     * Generates a square matrix of input size holding counting numbers starting
+     * from 1.
+     *
      * @return NxN Integer ArrayList matrix
      */
     public static ArrayList<ArrayList<Integer>> generateIntMatrix(int n) {
@@ -39,6 +40,17 @@ public class MatrixUtilities {
         for (int i = 0; i < m.size(); i++) {
             for (int j = 0; j < m.get(i).size(); j++) {
                 System.out.print(m.get(i).get(j));
+                System.out.print(" ");
+            }
+            System.out.println("");
+        }
+    }
+
+    public static void printInt2DArray(int[][] matrix) {
+        System.out.println("");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j]);
                 System.out.print(" ");
             }
             System.out.println("");
