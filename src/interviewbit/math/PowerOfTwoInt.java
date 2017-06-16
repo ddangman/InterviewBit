@@ -1,7 +1,5 @@
 package interviewbit.math;
 
-import static java.lang.Math.sqrt;
-
 /**
  *
  * @author Dang

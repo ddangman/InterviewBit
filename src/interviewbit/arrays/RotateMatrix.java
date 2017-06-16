@@ -3,7 +3,6 @@
  */
 package interviewbit.arrays;
 
-import interviewbit.InterviewBit;
 import java.util.ArrayList;
 
 /**
