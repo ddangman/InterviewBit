@@ -4,46 +4,61 @@
 package interviewbit.hashing;
 
 /**
- *
- * @author Dang
+ * Given a string 'text' and a string 'pattern', 
+ * find the minimum window in text which will contain all the characters in pattern
+ * If no such window exists, return an empty string ""
+ * 
+ * Solution involves using two pointers to represent the window boundary
+ * Expand the window until all pattern characters are found
+ * Reduce window until window is invalid. Once invalid, expand window until all
+ * pattern characters are found.
+ * int[] map will be used to track characters in window. 
+ * Pattern characters are added to map. As string characters are added to window,
+ * map value is subtracted. As string characters are removed from window, 
+ * map value is added.
+ * If map value is greater than 0, we know it is an unmatched character from pattern.
+ * 
  */
 public class WindowString {
     	public String minWindow(String text, String pattern) {
-            int counter = pattern.length(); // check whether substing is valid
-            int begin = 0, end = 0; // two pointers representing window
+            int counter = pattern.length(); // number of unmatched pattern characters
+            int begin = 0, end = 0; // two pointers representing window boundary
             int head = 0;
-            int minLen = Integer.MAX_VALUE; // minimum length of substring
+            int minWin = Integer.MAX_VALUE; // smallest window found
             
-            // map characters from pattern
+            // integer array for ASCII 128 direct access table
+            // index indicates ASCII character
+            // positive value indicates number of unmatched characters
             int[] map = new int[128];
-            // statistic for count of char in T
+            // count characters in pattern
             for (int i = 0; i < counter; i++) {
                 char c = pattern.charAt(i);
                 map[c]++;
             }
             
             while (end < text.length()) {
-                // if char in S exists in T, decrease counter
+                // decrease counter if map shows text char as unmatched
                 if (map[text.charAt(end)] > 0) {
                     counter--;
                 }  
-                // decrease map value 
+                // add char to map 
                 // If char does not exist in pattern, map will be negative
                 map[text.charAt(end)]--;
                 
                 // move end to find a valid window
                 end++;
                 
-                // when valid window is found, move start to find a smaller window
+                // when valid window is found, move start to decrease window
                 while (counter == 0) {
-                    // use minLen to hold window size
-                    if (end - begin < minLen) {
+                    // use minWin to hold window size
+                    if (end - begin < minWin) {
                         head = begin;
-                        minLen = end - begin;
+                        minWin = end - begin;
                     } 
-                    map[text.charAt(begin)]++; // increment char in map
+                    // 
+                    map[text.charAt(begin)]++; // remove char from map
                     // if char did not exist in pattern, it should have a negative value
-                    // when char exists in pattern, increase counter
+                    // if char belongs to pattern, increase counter
                     if (map[text.charAt(begin)] > 0) {
                         counter++;
                     }  
@@ -51,6 +66,6 @@ public class WindowString {
                 }
             }
             
-            return minLen == Integer.MAX_VALUE ? "" : text.substring(head, head + minLen);
+            return minWin == Integer.MAX_VALUE ? "" : text.substring(head, head + minWin);
 	}
 }

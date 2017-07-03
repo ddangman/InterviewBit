@@ -48,9 +48,9 @@ public class LongestPalindromicSubstring {
         }
         String bs = sb.toString();
 
-        int max = 1;
-        int maxI = 0;
-        int[] ca = new int[bs.length()];
+        int max = 1; // max palindrome length
+        int maxI = 0; // max index
+        int[] ca = new int[bs.length()]; // center array
 
         for (int i = 0; i < bs.length();) {
             // left and right edge of center

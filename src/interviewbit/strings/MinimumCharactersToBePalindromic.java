@@ -34,7 +34,7 @@ public class MinimumCharactersToBePalindromic {
             if (mirror.charAt(i) == mirror.charAt(j)) {
                 // increment matching index so when rollback occurs, 
                 // char after matching prefix-suffix is compared
-                j++; 
+                j++;                
                 lps[i] = j; // store index to roll back if mismatch
                 i++;
             } else if (j != 0) {
@@ -45,8 +45,8 @@ public class MinimumCharactersToBePalindromic {
                 i++;
             }
         }
-        
-        // ake the last value of the LPS array and 
+
+        // take the last value of the LPS array and 
         // subtract it with the length of the original string
         //This will give us the minimum number of insertions 
         //required in the begining of the string
@@ -65,55 +65,54 @@ public class MinimumCharactersToBePalindromic {
             sb.append(a.charAt(i));
             sb.append('|');
         }
-        String bs = sb.toString();
-
-        int max = 1;
-        int[] ca = new int[bs.length()];
-
-        for (int i = 0; i < bs.length();) {
-            // left and right edge of center
+        String rs = sb.toString(); // reverse string
+        
+        int max = 1; // max palindrome length
+        int[] ca = new int[rs.length()]; // center array
+        
+        for (int i = 0; i < rs.length();) {
+            // calculate left and right edge of center
             int left = i - ca[i] / 2;
             int right = i + ca[i] / 2;
             // expand palindrome from center
-            while (left > 0 && right + 1 < bs.length()
-                    && bs.charAt(left - 1) == bs.charAt(right + 1)) {
+            while (left > 0 && right + 1 < rs.length()
+                    && rs.charAt(left - 1) == rs.charAt(right + 1)) {
                 left--;
                 right++;
             }
             ca[i] = right - left + 1;
 
-            // keep best palindrome touching right edge
-            if (right == bs.length() - 1 && ca[i] > max) {
-                max = ca[i];
-            }
-
             // current palindrome reaches end of array
-            if (right == bs.length() - 1) {
+            if (right == rs.length() - 1) {
+                // keep best palindrome touching right edge
+                if (ca[i] > max) {
+                    max = ca[i];
+                }                
                 break;
             }
 
             // default next center
             // if index is even, it is spacing character. Skip it
-            int newI = right + (i % 2 == 0 ? 1 : 0);
+            int newI = right + (i % 2 == 0 ? 1 : 0); // new index
 
             // fill out center values for indices from index to right
             // find best center under current palindrome
             for (int j = i + 1; j <= right; j++) {
                 // [i - (j - i)] is left mirror of [j]
                 // in case left mirror exceeds current palindrome,
-                // store distance from k to right of current palindrome
+                // store distance from j to right of current palindrome
                 ca[j] = Math.min(ca[i - (j - i)], 2 * (right - j) + 1);
                 // update newCenter when case 3 is found
                 // this check will prevent case 1 or 4 is NOT newCenter
                 if (j + ca[i - (j - i)] / 2 == right) {
-                    // center at k reaches right edge
+                    // center at j reaches right edge
                     newI = j;
                     break;
                 }
             }
-
+            
             i = newI;
         }
-        return (bs.length() - max) / 2;
+        return (rs.length() - max) / 2;
     }
 }
