@@ -88,6 +88,7 @@ public class TreeTraversalIterative {
                     visit.add(pop.val); // visit top of stack
 
                     // top of stack is parent of pop
+                    // meaning top of stack's right has been explored. Visit
                     while (!stack.isEmpty() && stack.peek().right == pop) {
                         pop = stack.pop();
                         visit.add(pop.val);

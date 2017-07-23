@@ -36,12 +36,13 @@ public class LargestRectangleInHistogram {
         return maxArea;
     }
 
-    // area is (shortest height) * base
+    // 'i' is explored length of array 'a'
     public void findArea(ArrayList<Integer> a, Stack<Integer> stack, int i) {
         int area = 0;
-        int height = a.get(stack.pop()); // shortest height
+        int height = a.get(stack.pop()); // greatest height
         if (stack.isEmpty()) {
             // height is shortest when stack is empty
+            // so it is safe to multiply shortest height with entire explored base
             area = height * i;
         } else {
             // stack.peek is shorter than 'height' so its range must be excluded

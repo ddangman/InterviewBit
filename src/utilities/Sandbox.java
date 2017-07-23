@@ -5,96 +5,95 @@
  */
 package utilities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.List;
 
 /**
  *
  * @author Dang
  */
 public class Sandbox {
-
-    // Order of People Heights
-    public ArrayList<Integer> order(ArrayList<Integer> heights, ArrayList<Integer> infronts) {
-        int n = heights.size();
-
-        Person[] pa = new Person[n];
+    
+    private int n;
+    private List<Integer> input;
+    
+    public int longestSubsequenceLength(final List<Integer> input) {
+        this.n = input.size();
+        if (input.isEmpty()) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        }
+        this.input = input;
+        
+        int[] lis = generateLIS();
+        int[] lds = generateLDS();
+        
+        int max = 0;
         for (int i = 0; i < n; i++) {
-            pa[i] = new Person(heights.get(i), infronts.get(i));
+            int sum = lis[i] + lds[n - 1 - i] - 1;
+            max = max > sum ? max : sum;
         }
-        // sort by descending height
-        Arrays.sort(pa, (p1, p2) -> {
-            return p2.height - p1.height;
-        });
         
-        // build tree
-        Node root = new Node(pa[0]);
+        return max;
+    }
+    
+    public int[] generateLIS() {
+        int[] util = new int[n];
+        int[] lis = new int[n];
+        int len = 0;
+        lis[0] = 1;
+        util[0] = input.get(0);
+        
         for (int i = 1; i < n; i++) {
-            insert(root, pa[i]);
+            int x = input.get(i);
+            if (x > util[len]) {
+                util[++len] = x;
+                lis[i] = len + 1;
+            } else {
+                int index = bisearch(x, len, util);
+                util[index] = x;
+                lis[i] = index + 1;
+            }            
         }
         
-        // inorder traversal
-        ArrayList<Integer> visit = new ArrayList<>();
-        Stack<Node> stack = new Stack<>();
-        while (root != null || !stack.isEmpty()) {
-            // stack left until null
-            if (root != null) {
-                stack.add(root);
-                root = root.left;
+        return lis;
+    }
+    
+    public int[] generateLDS() {
+        int[] util = new int[n];
+        int[] lds = new int[n];
+        int len = 0;
+        util[0] = input.get(n - 1);
+        lds[0] = 1;
+        
+        for (int i = n - 2; i >= 0; i--) {
+            int x = input.get(i);
+            if (x > util[len]) {
+                util[++len] = x;
+                lds[n - i - 1] = len + 1;
             } else {
-                root = stack.pop();
-                visit.add(root.person.height);
-                root = root.right;
+                int index = bisearch(x, len, util);
+                util[index] = x;
+                lds[n - i - 1] = index + 1;
             }           
         }
         
-        return visit;
+        return lds;
     }
     
-    public void insert(Node root, Person p) {
-        insertUtil(root, p, p.inFront);
-    }
-    
-    public void insertUtil (Node root, Person p, int value) {
-        // person belongs in front of root, traverse left
-        if (value < root.value) {
-            if (root.left == null) {
-                root.left = new Node(p);
+    private int bisearch(int x, int end, int[] util) {
+        int start = 0;
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (util[mid] == x) {
+                return mid;
+            } else if (util[mid] > x) {
+                end = mid - 1;
             } else {
-                // push left
-                insertUtil(root.left, p, value);
-            } 
-            // increase left children count
-            root.value++;
-        } else {
-            if (root.right == null) {
-                root.right = new Node(p);
-            } else {
-                // push right
-                insertUtil(root.right, p, value - root.value);
-            }           
-        }       
-    }
-    
-    class Person {
-        public final int height;
-        public final int inFront;
-        
-        Person(int h, int i) {
-            this.height = h;
-            this.inFront = i;
+                start = mid + 1;
+            }            
         }
-    }
-    
-    class Node {
-        public int value;
-        public final Person person;
-        public Node left, right;
         
-        Node(Person p) {
-            this.person = p;
-            this.value = 1;
-        }
+        return start;
     }
 }

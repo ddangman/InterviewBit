@@ -3,51 +3,65 @@
  */
 package interviewbit.trees;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Dang
  */
 public class Sandbox {
 
-    private ArrayList<Integer> inorder;
-    private ArrayList<Integer> postorder;
-    private int pri; // postorder root index
+    public void connect(TreeLinkNode root) {
+        TreeLinkNode ptr;
 
-    public TreeNode buildTree(ArrayList<Integer> inorder, ArrayList<Integer> postorder) {
-        this.inorder = inorder;
-        this.postorder = postorder;
-        // postorder root is visited last
-        this.pri = inorder.size() - 1;
+        while (root != null) {
+            ptr = root;
 
-        return build(0, pri);
+            // connect child level
+            while (ptr != null) {
+                if (ptr.left != null) {
+                    if (ptr.right != null) {
+                        ptr.left.next = ptr.right;
+                    } else {
+                        ptr.left.next = getNextChild(ptr.next);
+                    }
+                }
+                if (ptr.right != null) {
+                    ptr.right.next = getNextChild(ptr.next);
+                }
+                ptr = ptr.next;
+            }
+            
+            // set root to next level's leftmost node
+            if (root.left != null) {
+                root = root.left;
+            } else if (root.right != null) {
+                root = root.right;
+            } else {
+                root = getNextChild(root.next);
+            }           
+        }
+
+    }
+    
+    public TreeLinkNode getNextChild(TreeLinkNode node) {
+        while (node != null) {
+            if (node.left != null) {
+                return node.left;
+            }            
+            if (node.right != null) {
+                return node.right;
+            }            
+            node = node.next;
+        }
+        return null;
     }
 
-    private TreeNode build(int start, int end) {
-        if (end < start) {
-            return null;
+    public class TreeLinkNode {
+
+        int val;
+        TreeLinkNode left, right, next;
+
+        TreeLinkNode(int x) {
+            val = x;
         }
-
-        TreeNode root = new TreeNode(postorder.get(pri--));
-        if (end == start) {
-            return root;
-        }
-
-        int iri = end; // inorder root index
-        for (int i = start; i < end; i++) {
-            if (inorder.get(i) == root.val) {
-                iri = i;
-                break;
-            }
-        }
-
-        root.right = build(iri + 1, end);
-        // left child root is visited before right, 
-        // so right recursion must be stacked before left
-        // to decrement postorder root index properly
-        root.left = build(start, iri - 1);
-
-        return root;
     }
 }
