@@ -3,9 +3,7 @@
  */
 package utilities;
 
-import interviewbit.linkedlists.ListNode;
-import java.util.ArrayList;
-import java.util.List;
+import interviewbit.datastructures.ListNode;
 import java.util.Scanner;
 
 /**
@@ -16,7 +14,6 @@ public class ListNodeUtilities {
 
     public static ListNode generateLinkedList(String s) {
         Scanner scanner = new Scanner(s);
-        List<Integer> list = new ArrayList<Integer>();
         ListNode root = new ListNode(scanner.nextInt());
         ListNode temp = root;
         while (scanner.hasNextInt()) {

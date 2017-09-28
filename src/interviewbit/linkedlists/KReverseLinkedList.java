@@ -3,6 +3,7 @@
  */
 package interviewbit.linkedlists;
 
+import interviewbit.datastructures.ListNode;
 import java.util.Stack;
 
 /**

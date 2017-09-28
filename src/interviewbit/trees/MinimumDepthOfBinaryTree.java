@@ -3,6 +3,8 @@
  */
 package interviewbit.trees;
 
+import interviewbit.datastructures.TreeNode;
+
 /**
  *
  * @author Dang

@@ -3,7 +3,7 @@
  */
 package interviewbit.dynamicprogramming;
 
-import interviewbit.trees.TreeNode;
+import interviewbit.datastructures.TreeNode;
 
 /**
  * Given a binary tree, find the maximum path sum. 

@@ -3,6 +3,7 @@
  */
 package interviewbit.trees;
 
+import interviewbit.datastructures.TreeNode;
 import java.util.ArrayList;
 
 /* http://www.geeksforgeeks.org/cartesian-tree/

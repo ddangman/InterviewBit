@@ -19,6 +19,13 @@ public class ArrayUtilities {
         return build;
     }
 
+    public static <E> void printArray(E[] inputArray) {
+        for (E element : inputArray) {
+            System.out.printf("%s ", element);
+        }
+        System.out.println("");
+    }
+
     public static void printArray(int[] a) {
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
@@ -32,7 +39,7 @@ public class ArrayUtilities {
         }
         System.out.println("");
     }
-    
+
     public static void printArray(String[] a) {
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
@@ -48,7 +55,6 @@ public class ArrayUtilities {
             System.out.println("");
         }
     }
-    
 
     public static ArrayList<ArrayList<Character>> stringArrayToCharMatrix(ArrayList<String> stAr) {
         ArrayList<ArrayList<Character>> charMatrix = new ArrayList<>();

@@ -3,6 +3,8 @@
  */
 package interviewbit.linkedlists;
 
+import interviewbit.datastructures.ListNode;
+
 /**
  *
  * @author Dang

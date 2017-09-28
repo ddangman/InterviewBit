@@ -1,19 +1,20 @@
 /*
  * This is my project containing my solutions to InterviewBit problems.
  */
-package interviewbit.trees;
+package interviewbit.datastructures;
 
 /**
  *
  * @author Dang
  */
-public class TreeNode {
+public class ListNode {
 
     public int val;
-    public TreeNode left;
-    public TreeNode right;
+    public ListNode next;
 
-    TreeNode(int x) {
+    public ListNode(int x) {
         val = x;
+        next = null;
     }
+    
 }

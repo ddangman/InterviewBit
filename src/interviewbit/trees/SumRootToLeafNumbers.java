@@ -3,6 +3,7 @@
  */
 package interviewbit.trees;
 
+import interviewbit.datastructures.TreeNode;
 import java.math.BigInteger;
 
 /**
