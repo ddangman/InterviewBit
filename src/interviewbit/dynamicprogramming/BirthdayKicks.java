@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Return the first lexicographical answer array
  * @author Dang
  */
-public class TusharBirthdayBomb {
+public class BirthdayKicks {
 
     public ArrayList<Integer> solve(int hp, ArrayList<Integer> power) {
         int n = power.size();

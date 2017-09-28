@@ -32,6 +32,13 @@ public class ArrayUtilities {
         }
         System.out.println("");
     }
+    
+    public static void printArray(String[] a) {
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + " ");
+        }
+        System.out.println("");
+    }
 
     public static void printMatrix(ArrayList<ArrayList<Integer>> m) {
         for (int i = 0; i < m.size(); i++) {

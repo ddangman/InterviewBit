@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
             <url>src/interviewbit/math/SortedPermutationRankRepeats.java</url>
             <bookmark id="1">
@@ -12,8 +12,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dang/Documents/NetBeansProjects/InterviewBit/src/interviewbit/InterviewBit.java</file>
-            <file>file:/C:/Users/Dang/Documents/NetBeansProjects/InterviewBit/src/interviewbit/trees/ConstructBTFromInorderAndPostorder.java</file>
+            <file>file:/E:/ComputerScience/InterviewBit/src/interviewbit/InterviewBit.java</file>
         </group>
     </open-files>
 </project-private>

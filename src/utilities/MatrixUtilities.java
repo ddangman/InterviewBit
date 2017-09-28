@@ -41,7 +41,7 @@ public class MatrixUtilities {
      * @return matrix of ArrayList values starting from row zero and filling 
      * columns to size of width.
      */
-    public static ArrayList<ArrayList<Integer>> arraylistToMatrix(int width, ArrayList<Integer> a) {
+    public static ArrayList<ArrayList<Integer>> IntegerArraylistToMatrix(int width, ArrayList<Integer> a) {
         ArrayList<ArrayList<Integer>> m = new ArrayList<>(); // matrix
         int ai = 0; // a index
         
@@ -52,6 +52,30 @@ public class MatrixUtilities {
                 build.add(a.get(ai++));
             }
             m.add(build);
+        }
+        
+        return m;
+    }
+    
+        /**
+     * Generates a matrix from an ArrayList. Last row does not have to be filled
+     * to the width.
+     * @param width maximum length of each matrix row
+     * @param a ArrayList of values to be turned into matrix.
+     * @return matrix of ArrayList values starting from row zero and filling 
+     * columns to size of width.
+     */
+    public static ArrayList<String> StringArraylistToMatrix(int width, String a) {
+        ArrayList<String> m = new ArrayList<>(); // matrix
+        int ai = 0; // a index
+        
+        while (ai < a.length()) {
+            int i = 0; // new list index
+            StringBuilder sb = new StringBuilder();
+            while (i++ < width) {
+                sb.append(a.charAt(ai++));
+            }
+            m.add(sb.toString());
         }
         
         return m;
@@ -86,6 +110,17 @@ public class MatrixUtilities {
     public static void print2DArray(long[][] matrix) {
         System.out.println("");
         for (long[] matrix1 : matrix) {
+            for (int j = 0; j < matrix1.length; j++) {
+                System.out.print(matrix1[j]);
+                System.out.print(" ");
+            }
+            System.out.println("");
+        }
+    }
+    
+    public static void print2DArray(String[][] matrix) {
+        System.out.println("");
+        for (String[] matrix1: matrix) {
             for (int j = 0; j < matrix1.length; j++) {
                 System.out.print(matrix1[j]);
                 System.out.print(" ");
