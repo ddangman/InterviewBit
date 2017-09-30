@@ -4,6 +4,7 @@
 package utilities;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * This class contains utilities for ArrayList matrices.
@@ -57,7 +58,35 @@ public class MatrixUtilities {
         return m;
     }
     
-        /**
+    /**
+     * Generates a matrix from an ArrayList. Last row does not have to be filled
+     * to the width.
+     * @param width maximum length of each matrix row
+     * @param a String of integer values to be turned into matrix.
+     * @return matrix of ArrayList values starting from row zero and filling 
+     * columns to size of width.
+     */
+    public static ArrayList<ArrayList<Integer>> StringToIntegerMatrix(int width, String a) {
+        ArrayList<ArrayList<Integer>> m = new ArrayList<>(); // matrix
+        Scanner scanner = new Scanner(a);
+        ArrayList<Integer> build = new ArrayList<>();
+        int count = 0;
+        
+        while (scanner.hasNextInt()) {
+            build.add(scanner.nextInt());
+            count++;
+            if (count == width) {
+                count = 0;
+                // build.clear will not work since m points to build
+                m.add(build);
+                build = new ArrayList<>(); // points to new ArrayList
+            }            
+        }
+        
+        return m;
+    }
+    
+    /**
      * Generates a matrix from an ArrayList. Last row does not have to be filled
      * to the width.
      * @param width maximum length of each matrix row
@@ -101,6 +130,21 @@ public class MatrixUtilities {
         for (int[] matrix1 : matrix) {
             for (int j = 0; j < matrix1.length; j++) {
                 System.out.print(matrix1[j]);
+                System.out.print(" ");
+            }
+            System.out.println("");
+        }
+    }
+    
+    public static void print2DArray(boolean[][] matrix) {
+        System.out.println("");
+        for (boolean[] matrix1 : matrix) {
+            for (int j = 0; j < matrix1.length; j++) {
+                if (matrix1[j]) {
+                    System.out.print("1");
+                } else {
+                    System.out.print("0");
+                }                
                 System.out.print(" ");
             }
             System.out.println("");

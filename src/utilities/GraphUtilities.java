@@ -3,6 +3,7 @@
  */
 package utilities;
 
+import interviewbit.datastructures.HashQueue;
 import interviewbit.datastructures.UndirectedGraphNode;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -12,6 +13,13 @@ import java.util.Scanner;
  * @author Duy Dang
  */
 public class GraphUtilities {
+    
+    /**
+     * 
+     * @param s first int is number of vectors, followed by vector labels, 
+     * followed by 1 for edge, and 0 for no edge
+     * @return 
+     */
     public static UndirectedGraphNode genGraph(String s) {
         Scanner scanner = new Scanner(s);
         int vCount = scanner.nextInt();
@@ -55,5 +63,22 @@ public class GraphUtilities {
         }
         
         return root;
+    }
+    
+    public static void printGraph(UndirectedGraphNode node) {
+        HashQueue<UndirectedGraphNode> hq = new HashQueue<>();
+        hq.add(node);
+        while (!hq.isEmpty()) {
+            UndirectedGraphNode pop = hq.pop();
+            StringBuilder sb = new StringBuilder();
+            sb.append(pop.label + " [");
+            for(UndirectedGraphNode nb : pop.neighbors) {
+                sb.append(nb.label + " ");
+                hq.add(nb);
+            }
+            sb.setLength(sb.length() - 1);
+            sb.append(']');
+            System.out.println(sb.toString());
+        }
     }
 }

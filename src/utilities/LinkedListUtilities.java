@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Dang
  */
-public class ListNodeUtilities {
+public class LinkedListUtilities {
 
     public static ListNode generateLinkedList(String s) {
         Scanner scanner = new Scanner(s);
