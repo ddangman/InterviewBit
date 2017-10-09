@@ -47,6 +47,17 @@ public class ArrayUtilities {
         System.out.println("");
     }
 
+    public static void printArray(boolean[] a) {
+        for (int j = 0; j < a.length; j++) {
+            if (a[j]) {
+                System.out.print("1 ");
+            } else {
+                System.out.print("0 ");
+            }
+        }
+        System.out.println("");
+    }
+
     public static void printMatrix(ArrayList<ArrayList<Integer>> m) {
         for (int i = 0; i < m.size(); i++) {
             for (int j = 0; j < m.get(i).size(); j++) {
