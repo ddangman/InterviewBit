@@ -22,7 +22,7 @@ public class CountElementOccurence {
         return end - start + 1;
     }
 
-    public int findLast(final List<Integer> a, int b, int start) {
+    public static int findLast(final List<Integer> a, int b, int start) {
         int end = a.size() - 1;
         int mid = 0;
         int index = -1;
@@ -40,7 +40,7 @@ public class CountElementOccurence {
         return index;
     }
 
-    public int findFirst(final List<Integer> a, int b, int end) {
+    public static int findFirst(final List<Integer> a, int b, int end) {
         int start = 0;
         int mid = 0;
         int index = -1;

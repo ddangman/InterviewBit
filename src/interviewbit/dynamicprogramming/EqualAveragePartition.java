@@ -9,6 +9,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * Given an array with non negative numbers, divide the array into two parts
+ * such that the average of both the parts is equal. Return both parts (If
+ * exist). If there is no solution. return an empty list.
+ * 
+ * s1 = sum of partition 1, s2 = sum of partition 2
+ * n1 = number of items in partition 1, n2 = number of items in partition 2
+ * Equal averages means: s1/n1 == s2/n2
+ * 
+ * s_all == s1 + s2 
+ * n_all == n1 + n2
+ * (s1 + s2) / (n1 + n2) == s_all / n_all
  *
  * @author Duy Dang
  */
@@ -20,19 +31,20 @@ public class EqualAveragePartition {
     private int n;
 
     public ArrayList<ArrayList<Integer>> avgset(ArrayList<Integer> array) {
-        if (array == null || array.isEmpty()) {
+        if (array == null || array.isEmpty()) { // edge case
             return new ArrayList<>();
         }
 
         this.array = array;
-        Collections.sort(this.array);
+        this.n = array.size();
+        this.indexSetA = new ArrayList<>();
 
-        int sum = 0;
+        Collections.sort(this.array); // guarantees lexicographic order
+
+        int sum = 0; // get summation of array
         for (int element : array) {
             sum += element;
         }
-
-        this.n = array.size();
 
         // memoization table by three states : (index, sum of array, size of array)
         this.dp = new boolean[n][1 + sum][n];
@@ -45,14 +57,13 @@ public class EqualAveragePartition {
             }
         }
 
-        this.indexSetA = new ArrayList<>();
-
         // iterate for third state : size of setA which varies from 1 to n-1
         for (int sizeA = 1; sizeA < n; sizeA++) { // sizeA should not be zero
             if ((sum * sizeA) % n != 0) {
-                continue; // sizeA will yield invalid sumA
+                continue; // sizeA will yield invalid sumA (has remainder)
             }
 
+            // sumA/sizeA == sumAll/sizeAll
             int sumA = (sum * sizeA) / n;
 
             if (isPartitionPossible(0, sumA, sizeA) == true) {
@@ -63,14 +74,48 @@ public class EqualAveragePartition {
         return generatePartitions();
     }
 
+    private ArrayList<ArrayList<Integer>> generatePartitions() {
+        int e = 0, i = 0;
+        int sizeA = this.indexSetA.size();
+
+        if (sizeA == n || sizeA == 0) {   // no solution exists
+            return new ArrayList<>();
+        }
+
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+        result.add(new ArrayList<>());
+
+        // index e is used to iterate over all elements and
+        // index i is used to iterate over indexSetA
+        while (e < n && i < sizeA) {
+            if (e == this.indexSetA.get(i)) {
+                result.get(0).add(this.array.get(e));
+                i++;
+            } else {
+                result.get(1).add(this.array.get(e));
+            }
+            e++;
+        }
+
+        while (e < n) {
+            result.get(1).add(this.array.get(e));
+            e++;
+        }
+
+        return result;
+    }
+
+    // attempt to reach target sum using available elements 
+    // (elements may be skipped as needed). Top-down recursion with memoization
     private boolean isPartitionPossible(final int index, final int sumA, final int sizeA) {
-        if (sizeA == 0) {
+        if (sizeA == 0) { // base case
             return sumA == 0;
         }
-        if (index >= n) {
+        if (index >= n) { // index exceeds number of items
             return false;
         }
-        if (this.dp[index][sumA][sizeA] == false) {
+        if (this.dp[index][sumA][sizeA] == false) { // return memoize
             return false;
         }
 
@@ -93,37 +138,6 @@ public class EqualAveragePartition {
         // reaching this line means partition is NOT possible
         this.dp[index][sumA][sizeA] = false;
         return this.dp[index][sumA][sizeA];
-    }
-
-    private ArrayList<ArrayList<Integer>> generatePartitions() {
-        int i = 0, j = 0;
-        int sizeA = this.indexSetA.size();
-
-        if (sizeA == n || sizeA == 0) {   // no solution exists
-            return new ArrayList<>();
-        }
-
-        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        result.add(new ArrayList<>());
-        result.add(new ArrayList<>());
-
-        // index i is used to iterate over all elements and index j is used to iterate over indexSetA
-        while (i < n && j < sizeA) {
-            if (i == this.indexSetA.get(j)) {
-                result.get(0).add(this.array.get(i));
-                j++;
-            } else {
-                result.get(1).add(this.array.get(i));
-            }
-            i++;
-        }
-
-        while (i < n) {
-            result.get(1).add(this.array.get(i));
-            i++;
-        }
-
-        return result;
     }
 
     static class moreEfficient {

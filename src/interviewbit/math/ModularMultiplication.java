@@ -9,7 +9,7 @@ package interviewbit.math;
  */
 public class ModularMultiplication {
 
-    public long modularMultiplication(long a, long b, long mod) {
+    public static long modularMultiplication(long a, long b, long mod) {
         long res = 0;
         a %= mod;
         while (b > 0) {
