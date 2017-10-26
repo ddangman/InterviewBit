@@ -13,19 +13,27 @@ import java.util.Set;
  * such that the average of both the parts is equal. Return both parts (if
  * possible). If there is no solution. return an empty list.
  * 
- * s1 = sum of partition 1, s2 = sum of partition 2
- * n1 = number of items in partition 1, n2 = number of items in partition 2
- * Equal averages means: s1/n1 == s2/n2
+ * sA = sum of partition A, sB = sum of partition B
+ * nA = number of items in partition A, nB = number of items in partition B
+ * Equal averages means: sA/nA == sB/nB
  * 
- * s_all == s1 + s2 
- * n_all == n1 + n2
- * (s1 + s2) / (n1 + n2) == s_all / n_all
+ * s_all == sA + sB 
+ * n_all == nA + nB
+ * (sA + sB) / (nA + nB) == s_all / n_all
+ * 
+ * Logic:
+ * 1. Find a valid sumA/nA. It will equal s_all/n_all
+ * 2. Find exactly nA inputValues that will add up to exactly sumA (0/1 knapsack)
+ *    Use greedy so nA is smallest. Initialize nA as 1.
+ *    Sort input so output is sorted. Start with sortedInput(0) to maintain order.
  *
  * @author Duy Dang
  */
 public class EqualAveragePartition {
 
     private ArrayList<Integer> array;
+    // memoization table by three states : 
+    // [index of sorted array] [sum of array_A] [size of array_A]
     private boolean[][][] dp;
     private ArrayList<Integer> indexSetA;
     private int n;
@@ -46,7 +54,7 @@ public class EqualAveragePartition {
             sum += element;
         }
 
-        // memoization table by three states : (index, sum of array, size of array)
+        // [index of sorted array] [sum of array_A] [size of array_A]
         this.dp = new boolean[n][1 + sum][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < 1 + sum; j++) {
@@ -60,7 +68,7 @@ public class EqualAveragePartition {
         // iterate for third state : size of setA which varies from 1 to n-1
         for (int sizeA = 1; sizeA < n; sizeA++) { // sizeA should not be zero
             if ((sum * sizeA) % n != 0) {
-                continue; // sizeA will yield incorrect sumA (dropped remainder)
+                continue; // sumA/sizeA != sumAll/sizeAll if remainder exists
             }
 
             // sumA/sizeA == sumAll/sizeAll
@@ -141,7 +149,8 @@ public class EqualAveragePartition {
     }
 
     public static class moreEfficient {
-        // same logic as outer class, but does not repeat dp[true]
+        // same logic as outer class using int dp[][][] = 0 for unvisited,
+        // 1 for true, -1 for false
 
         private int n;
         private int sumAll;
