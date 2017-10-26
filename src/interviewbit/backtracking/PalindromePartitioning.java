@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class PalindromePartitioning {
 
-    ArrayList<ArrayList<String>> allPalindromes;
-    int n;
-    String input;
-    ArrayList<String> build;
+    private ArrayList<ArrayList<String>> allPalindromes;
+    private int n;
+    private String input;
+    private ArrayList<String> build;
 
     public ArrayList<ArrayList<String>> partition(String s) {
         n = s.length();
@@ -25,7 +25,7 @@ public class PalindromePartitioning {
         return allPalindromes;
     }
 
-    public void findPalindrome(int start) {
+    private void findPalindrome(int start) {
         if (start == n) {
             allPalindromes.add(new ArrayList<>(build));
         } 
@@ -40,7 +40,7 @@ public class PalindromePartitioning {
         }
     }
 
-    public boolean isPalindrome(String s) {
+    private boolean isPalindrome(String s) {
         if (s.length() == 1) {
             return true;
         }        

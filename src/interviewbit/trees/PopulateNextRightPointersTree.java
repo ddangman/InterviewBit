@@ -55,7 +55,7 @@ public class PopulateNextRightPointersTree {
      * @param node current node's entire level should already be connected
      * @return next child of current node 
      */
-    public TreeLinkNode getNextChild(TreeLinkNode node) {
+    private TreeLinkNode getNextChild(TreeLinkNode node) {
         TreeLinkNode next = node.next;
 
         // traverse node's level to find first node with child
@@ -76,7 +76,7 @@ public class PopulateNextRightPointersTree {
         return null;
     }
 
-    public class TreeLinkNode {
+    private class TreeLinkNode {
 
         int val;
         TreeLinkNode left, right, next;

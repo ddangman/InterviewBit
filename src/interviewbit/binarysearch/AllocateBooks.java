@@ -45,7 +45,7 @@ public class AllocateBooks {
         return best;
     }
     
-    public boolean isPossible(ArrayList<Integer> a, int b, int max) {
+    private boolean isPossible(ArrayList<Integer> a, int b, int max) {
         int count = 0;
         for (int i = 0; i < a.size(); i++) {
             if (a.get(i) > max) {

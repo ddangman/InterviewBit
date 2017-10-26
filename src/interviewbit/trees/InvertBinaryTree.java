@@ -16,7 +16,7 @@ public class InvertBinaryTree {
         return root;
     }
 
-    public void inversion(TreeNode root) {
+    private void inversion(TreeNode root) {
         if (root == null) {
             return;
         }

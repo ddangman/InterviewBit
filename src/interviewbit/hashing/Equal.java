@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class Equal {
 
-    public class Indices {
+    private class Indices {
 
         protected int first;
         protected int second;

@@ -26,7 +26,7 @@ public class PalindromeList {
         return checkString(sb.toString());
     }
     
-    public int checkString(String s) {
+    private int checkString(String s) {
         int l = 0;
         int r = s.length() - 1;
         while (l < r) {

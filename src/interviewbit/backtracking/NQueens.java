@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class NQueens {
 
-    ArrayList<ArrayList<String>> allSolutions = new ArrayList<>();
+    private ArrayList<ArrayList<String>> allSolutions = new ArrayList<>();
 
     public ArrayList<ArrayList<String>> solveNQueens(int n) {
         int[] positions = new int[n];
@@ -20,7 +20,7 @@ public class NQueens {
         return allSolutions;
     }
 
-    public boolean findPositions(int[] positions, int i, int n) {
+    private boolean findPositions(int[] positions, int i, int n) {
         // solution found
         if (i == n) {
             saveSolution(positions, n);
@@ -37,7 +37,7 @@ public class NQueens {
         return false;
     }
 
-    public boolean isSafe(int[] positions, int i, int n) {
+    private boolean isSafe(int[] positions, int i, int n) {
         for (int j = 0; j < i; j++) {
             // check vertical
             if (positions[i] == positions[j]) {
@@ -54,7 +54,7 @@ public class NQueens {
         return true;
     }
 
-    public void saveSolution(int[] positions, int n) {
+    private void saveSolution(int[] positions, int n) {
         ArrayList<String> solved = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             StringBuilder sb = new StringBuilder();

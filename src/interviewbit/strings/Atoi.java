@@ -72,7 +72,7 @@ public class Atoi {
         }
     }
 
-    public boolean exceedMax(String num) {
+    private boolean exceedMax(String num) {
         if (num.length() > 10) {
             return true;
         }
@@ -83,7 +83,7 @@ public class Atoi {
         return false;
     }
 
-    public boolean exceedMin(String num) {
+    private boolean exceedMin(String num) {
         if (num.length() > 11) {
             return true;
         }

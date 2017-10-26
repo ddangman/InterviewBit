@@ -12,10 +12,10 @@ import java.util.Collections;
  */
 public class Permutations {
 
-    int size;
-    boolean[] used;
-    ArrayList<ArrayList<Integer>> allCombo;
-    ArrayList<Integer> input;
+    private int size;
+    private boolean[] used;
+    private ArrayList<ArrayList<Integer>> allCombo;
+    private ArrayList<Integer> input;
 
     public ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> a) {
         size = a.size();
@@ -27,7 +27,7 @@ public class Permutations {
         return allCombo;
     }
 
-    public void findCombo(int level, ArrayList<Integer> build) {
+    private void findCombo(int level, ArrayList<Integer> build) {
         if (level == size) {
             allCombo.add(new ArrayList<>(build));
         }

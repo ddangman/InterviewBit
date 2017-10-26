@@ -43,7 +43,7 @@ public class ThreeSum {
         }
     }
 
-    public boolean binarySearch(ArrayList<Integer> a, int start, int key) {
+    private boolean binarySearch(ArrayList<Integer> a, int start, int key) {
         int end = a.size() - 1;
         while (start <= end) {
             int mid = (start + end) / 2;

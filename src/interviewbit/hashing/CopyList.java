@@ -14,7 +14,7 @@ public class CopyList {
         public int label;
         public RandomListNode next, random;
 
-        public RandomListNode(int x) {
+        RandomListNode(int x) {
             this.label = x;
         }
     };

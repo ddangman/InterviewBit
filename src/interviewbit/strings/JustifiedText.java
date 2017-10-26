@@ -32,7 +32,7 @@ public class JustifiedText {
         return justified;
     }
     
-    public String returnLine(ArrayList<String> a, int b, int i, int j, int space) {
+    private String returnLine(ArrayList<String> a, int b, int i, int j, int space) {
         int diff = j - i;
         int div = space / diff;
         int mod = space % diff;
@@ -55,7 +55,7 @@ public class JustifiedText {
         return sb.toString();
     }
     
-    public String bottomLine(ArrayList<String> a, int i, int j, int padding) {
+    private String bottomLine(ArrayList<String> a, int i, int j, int padding) {
         StringBuilder sb = new StringBuilder();
         while (i <= j) {
             sb.append(a.get(i));

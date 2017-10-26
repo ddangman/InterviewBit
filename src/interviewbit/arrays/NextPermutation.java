@@ -50,7 +50,7 @@ public class NextPermutation {
         }        
     }
 
-    public void reverse(ArrayList<Integer> list, int start) {
+    private void reverse(ArrayList<Integer> list, int start) {
         int left = start;
         int right = list.size()-1;
         while (left < right) {

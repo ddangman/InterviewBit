@@ -47,7 +47,7 @@ public class CompareVersionNumbers {
         return 0;
     }
 
-    public ArrayList<BigInteger> generateVersionArray(String s) {
+    private ArrayList<BigInteger> generateVersionArray(String s) {
         ArrayList<BigInteger> ar = new ArrayList<>();
 
         int i = 0;

@@ -12,8 +12,8 @@ import java.util.Collections;
  */
 public class GenerateAllParentheses {
 
-    ArrayList<String> allCombo;
-    int n;
+    private ArrayList<String> allCombo;
+    private int n;
 
     public ArrayList<String> generateParenthesis(int n) {
         allCombo = new ArrayList<>();
@@ -26,7 +26,7 @@ public class GenerateAllParentheses {
         return allCombo;
     }
 
-    public void fillArray(char[] ca, int i, int open, int close) {
+    private void fillArray(char[] ca, int i, int open, int close) {
         if (close == n) {
             allCombo.add(new String(ca));
             return;

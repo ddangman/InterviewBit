@@ -12,7 +12,7 @@ import java.util.Collections;
  */
 public class SpiralOrderMatrix {
 
-    public enum DIR {
+    private enum DIR {
         UP, DOWN, LEFT, RIGHT;
     }
 

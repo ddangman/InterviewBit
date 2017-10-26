@@ -71,7 +71,7 @@ public class MaximumUnsortedSubarray {
         return new ArrayList<Integer>(Arrays.asList(start, end));
     }
 
-    public int binarySearchFirst(ArrayList<Integer> A, int target, int high) {
+    private int binarySearchFirst(ArrayList<Integer> A, int target, int high) {
         int low = 0;
         int startIndex = -1;
         while (low <= high) {
@@ -88,7 +88,7 @@ public class MaximumUnsortedSubarray {
         return startIndex;
     }
 
-    public int binarySearchLast(ArrayList<Integer> A, int target, int low) {
+    private int binarySearchLast(ArrayList<Integer> A, int target, int low) {
         int endIndex = -1;
         low = 0;
         int high = A.size() - 1;

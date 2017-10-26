@@ -45,7 +45,7 @@ public class MatrixMedian {
                 // reduce current max to find lowest valid calculated_median possible
                 max = median;
                 // keep lowest median found in matrix
-                if (median < lowestMedian && findMedian(A, median)) {
+                if (median < lowestMedian && getMedian(A, median)) {
                     lowestMedian = median;
                 }
             } else {
@@ -57,7 +57,7 @@ public class MatrixMedian {
         return lowestMedian;
     }
 
-    public int lessOrEqualCount(ArrayList<Integer> arr, int key) {
+    private int lessOrEqualCount(ArrayList<Integer> arr, int key) {
 
         int start = 0;
         int end = arr.size() - 1;
@@ -79,7 +79,7 @@ public class MatrixMedian {
         }       
     }
 
-    public boolean findMedian(ArrayList<ArrayList<Integer>> matrix, int key) {
+    private boolean getMedian(ArrayList<ArrayList<Integer>> matrix, int key) {
         int r = matrix.size(); // row
         int c = matrix.get(0).size() - 1; // column
         for (int i = 0; i < r; i++) {

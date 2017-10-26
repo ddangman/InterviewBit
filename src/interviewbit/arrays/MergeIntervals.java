@@ -161,7 +161,7 @@ public class MergeIntervals {
 
     // binary search for first greater index
     // if match at end, go to next
-    public int firstGreater(ArrayList<Interval> intervals, int n) {
+    private int firstGreater(ArrayList<Interval> intervals, int n) {
         int start = 1;
         int end = intervals.size() * 2;
         while (start <= end) {
@@ -304,17 +304,17 @@ public class MergeIntervals {
 
     }
 
-    public static class Interval {
+    private static class Interval {
 
-        public int start;
-        public int end;
+        int start;
+        int end;
 
         Interval() {
             start = 0;
             end = 0;
         }
 
-        public Interval(int s, int e) {
+        Interval(int s, int e) {
             start = s;
             end = e;
         }

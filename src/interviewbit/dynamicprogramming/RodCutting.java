@@ -12,10 +12,10 @@ import java.util.Arrays;
  */
 public class RodCutting {
 
-    long[][] dp;
-    int[] cuts;
-    int[][] parent;
-    ArrayList<Integer> solution;
+    private long[][] dp;
+    private int[] cuts;
+    private int[][] parent;
+    private ArrayList<Integer> solution;
 
     public ArrayList<Integer> rodCut(int rod, ArrayList<Integer> scores) {
         // insert zero and rod length
@@ -63,7 +63,7 @@ public class RodCutting {
         backtrack(parent[s][e], e);
     }
 
-    class Simplified {
+    public class Simplified {
 
         // driver method with expected output
         public void main(String[] args) {
@@ -74,7 +74,7 @@ public class RodCutting {
             System.out.println(rc.rodCut(100, price)); // 56 30 14 7 3 2 6 22 25 45 34 51 54 52 78 66 61 58 57 59 63 76 
         }
 
-        ArrayList<Integer> build;
+        private ArrayList<Integer> build;
 
         public ArrayList<Integer> rodCut(int rod, ArrayList<Integer> scores) {
             int n = scores.size() + 2;

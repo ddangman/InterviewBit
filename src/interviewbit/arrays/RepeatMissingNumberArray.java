@@ -79,7 +79,7 @@ public class RepeatMissingNumberArray {
         return new ArrayList<>();
     }
 
-    public ArrayList<Integer> repeatedNumberPrint(final List<Integer> a) {
+    private ArrayList<Integer> repeatedNumberPrint(final List<Integer> a) {
         int xor = a.get(0); // hold xor of all elements and numbers 1 to a.size
         System.out.print("xor element ");
         System.out.println(Integer.toBinaryString(xor));

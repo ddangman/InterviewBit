@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class PrettyJson {
 
-    int tabs = 1;
+    private int tabs = 1;
 
     public ArrayList<String> prettyJSON(String a) {
         ArrayList<String> json = new ArrayList<>();
@@ -71,7 +71,7 @@ public class PrettyJson {
         return json;
     }
 
-    public StringBuilder tabBuilder() {
+    private StringBuilder tabBuilder() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tabs; i++) {
             sb.append("\t");

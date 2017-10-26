@@ -47,7 +47,7 @@ public class MinimizeAbsoluteDifference {
         return res;
     }
 
-    public int absDiff(int a, int b, int c) {
+    private int absDiff(int a, int b, int c) {
         int max;
         int min;
         if (a > b) {

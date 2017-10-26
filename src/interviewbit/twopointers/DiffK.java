@@ -28,7 +28,7 @@ public class DiffK {
         return 0;
     }
 
-    public int binarySearch(ArrayList<Integer> a, int key) {
+    private int binarySearch(ArrayList<Integer> a, int key) {
         int start = 0;
         int end = a.size() - 1;
         int mid = 0;

@@ -11,7 +11,7 @@ import java.math.BigInteger;
  */
 public class ImplementPowerFunction {
 
-    public int pow(int x, int n, int d) {
+    public static int pow(int x, int n, int d) {
         BigInteger mod = BigInteger.valueOf(x)
                 .modPow(BigInteger.valueOf(n), BigInteger.valueOf(d));
         int res = mod.intValue();

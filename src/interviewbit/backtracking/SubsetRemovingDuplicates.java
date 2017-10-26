@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class SubsetRemovingDuplicates {
 
-    ArrayList<ArrayList<Integer>> allCombos;
-    ArrayList<Integer> input;
-    int n;
+    private ArrayList<ArrayList<Integer>> allCombos;
+    private ArrayList<Integer> input;
+    private int n;
 
     public ArrayList<ArrayList<Integer>> subsetsWithDup(ArrayList<Integer> a) {
         Collections.sort(a);
@@ -46,7 +46,7 @@ public class SubsetRemovingDuplicates {
         return allCombos;
     }
 
-    public void findSubsets(int i, ArrayList<Integer> build) {
+    private void findSubsets(int i, ArrayList<Integer> build) {
         if (i == n) {
             allCombos.add(new ArrayList<>(build));
             return;
@@ -74,7 +74,7 @@ public class SubsetRemovingDuplicates {
         }
     }
 
-    class HashSolution {
+    public class HashSolution {
 
         HashSet<ArrayList<Integer>> hs;
         ArrayList<Integer> input;
@@ -109,7 +109,7 @@ public class SubsetRemovingDuplicates {
             return allCombos;
         }
 
-        public void findSubsets(int i, ArrayList<Integer> build) {
+        private void findSubsets(int i, ArrayList<Integer> build) {
             if (i == n) {
                 hs.add(new ArrayList<>(build));
                 return;

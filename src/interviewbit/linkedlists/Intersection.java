@@ -39,7 +39,7 @@ public class Intersection {
         return null;
     }
     
-    public int getLength(ListNode ln) {
+    private int getLength(ListNode ln) {
         int count = 0;
         while (ln != null) {
             count++;

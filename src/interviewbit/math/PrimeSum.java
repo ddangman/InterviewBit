@@ -24,7 +24,7 @@ public class PrimeSum {
         return new ArrayList<>();
     }
 
-    public boolean isPrime(int n) {
+    private boolean isPrime(int n) {
         if (n==0||n==1) {
             return false;
         }

@@ -26,7 +26,7 @@ public class PowerOf2 {
     /**
      * Returns {@code true} if {@code x} represents a power of two.
      */
-    public static boolean isPowerOfTwo(BigInteger x) {
+    private static boolean isPowerOfTwo(BigInteger x) {
         return x.signum() > 0 && x.getLowestSetBit() == x.bitLength() - 1;
     }
 

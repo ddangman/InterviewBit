@@ -43,7 +43,7 @@ public class RainWaterTrapped {
         return water;
     }
 
-    public int trapDebug(final List<Integer> a) {
+    private int trapDebug(final List<Integer> a) {
         // contains height of tallest bar to left + including i
         int[] left = new int[a.size()];
         // fill left[]

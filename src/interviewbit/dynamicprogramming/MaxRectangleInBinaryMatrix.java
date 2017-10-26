@@ -17,9 +17,9 @@ import java.util.Stack;
  */
 public class MaxRectangleInBinaryMatrix {
 
-    Stack<Integer> stack;
-    int[] hist; // histogram
-    int max;
+    private Stack<Integer> stack;
+    private int[] hist; // histogram
+    private int max;
 
     public int maximalRectangle(ArrayList<ArrayList<Integer>> input) {
         max = 0;
@@ -59,7 +59,7 @@ public class MaxRectangleInBinaryMatrix {
     }
 
     // calculates maximum histogram area
-    public void popArea(int i) {
+    private void popArea(int i) {
         int pop = stack.pop();
         int area = hist[pop] * i; // assuming smallest height index was popped
         if (!stack.isEmpty()) { // correct for smaller height in stack

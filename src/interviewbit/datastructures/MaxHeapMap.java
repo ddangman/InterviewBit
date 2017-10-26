@@ -17,7 +17,7 @@ public class MaxHeapMap<T> {
     private List<Node> allNodes = new ArrayList<Node>();
     private Map<T, Integer> nodePosition = new HashMap<>();
 
-    class Node {
+    private class Node {
 
         int weight;
         T key;

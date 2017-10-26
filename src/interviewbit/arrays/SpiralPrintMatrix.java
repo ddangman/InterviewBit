@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class SpiralPrintMatrix {
 
-    public enum DIR {
+    private enum DIR {
         UP, DOWN, LEFT, RIGHT;
     }
 

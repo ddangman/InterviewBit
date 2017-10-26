@@ -45,7 +45,7 @@ public class KthRowPascalTriangle {
         return row;
     }
 
-    public int rowUtil(int row, int col) {
+    private int rowUtil(int row, int col) {
         long fact = row;
         int diff = row - col;
         int hi = 0;

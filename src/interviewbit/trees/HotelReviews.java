@@ -84,9 +84,10 @@ public class HotelReviews {
     }
 
     private class Trie {
+
         Trie[] key;
         boolean isEnd;
-        
+
         Trie() {
             // all characters are lowercase alphabet
             // subtract 'a' from character 
@@ -96,46 +97,65 @@ public class HotelReviews {
     }
 
     private class Pair {
+
         int points;
         int index;
-        
+
         Pair(int p, int i) {
             points = p;
             index = i;
         }
     }
-    
-    class HashSetSolution {
-        private class Pair{
+
+    public class HashSetSolution {
+
+        private class Pair {
+
             private int goodness;
             private int index;
 
-            public Pair(int goodness, int index){
+            public Pair(int goodness, int index) {
                 this.goodness = goodness;
                 this.index = index;
             }
 
-            public Pair(){}
+            public Pair() {
+            }
 
-            public int getGoodness(){ return goodness; }
-            public int getIndex(){ return index; }
-            public void setGoodness(int goodness){ this.goodness = goodness; }
-            public void setIndex(int index){ this.index = index; }
+            public int getGoodness() {
+                return goodness;
+            }
+
+            public int getIndex() {
+                return index;
+            }
+
+            public void setGoodness(int goodness) {
+                this.goodness = goodness;
+            }
+
+            public void setIndex(int index) {
+                this.index = index;
+            }
         }
-    
+
         public ArrayList<Integer> solve(String A, ArrayList<String> B) {
             Set<String> set = new HashSet<String>();
 
-            for(String good: A.split("_")) set.add(good);
+            for (String good : A.split("_")) {
+                set.add(good);
+            }
 
             int n = B.size();
             List<Pair> rank = new ArrayList<Pair>();
 
-            for(int i=0; i<n; i++){
+            for (int i = 0; i < n; i++) {
                 String review = B.get(i);
                 int cnt = 0;
-                for(String word: review.split("_")){
-                    if(set.contains(word)) cnt += 1;
+                for (String word : review.split("_")) {
+                    if (set.contains(word)) {
+                        cnt += 1;
+                    }
                 }
                 Pair pair = new Pair();
                 // set pair values:
@@ -144,24 +164,29 @@ public class HotelReviews {
                 rank.add(pair);
             }
 
-            Collections.sort(rank,new Comparator<Pair>(){
-              @Override
-              public int compare(Pair lhs, Pair rhs) {
-                  if(rhs.getGoodness() > lhs.getGoodness()) return 1;
-                  else if(rhs.getGoodness() < lhs.getGoodness()) return -1;
-                  else{
-                      if(rhs.getIndex() > lhs.getIndex()) return -1;
-                      else return 1;
-                  }
-                 }
-             });
+            Collections.sort(rank, new Comparator<Pair>() {
+                @Override
+                public int compare(Pair lhs, Pair rhs) {
+                    if (rhs.getGoodness() > lhs.getGoodness()) {
+                        return 1;
+                    } else if (rhs.getGoodness() < lhs.getGoodness()) {
+                        return -1;
+                    } else {
+                        if (rhs.getIndex() > lhs.getIndex()) {
+                            return -1;
+                        } else {
+                            return 1;
+                        }
+                    }
+                }
+            });
 
             ArrayList<Integer> ans = new ArrayList<Integer>();
-             for(Pair p: rank){
-                 ans.add(p.getIndex());
-             }
+            for (Pair p : rank) {
+                ans.add(p.getIndex());
+            }
 
-             return ans;
+            return ans;
 
         }
     }

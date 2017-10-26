@@ -22,7 +22,7 @@ public class SearchRange {
                 searchLast(a, b, start)));
     }
     
-    public int searchFirst(final List<Integer> a, int key){
+    private int searchFirst(final List<Integer> a, int key){
         int start = 0;
         int end = a.size() - 1;
         int mid = 0;
@@ -41,7 +41,7 @@ public class SearchRange {
         return index;
     }
     
-    public int searchLast(final List<Integer> a, int key, int start){
+    private int searchLast(final List<Integer> a, int key, int start){
         int end = a.size() - 1;
         int mid = 0;
         int index = -1;

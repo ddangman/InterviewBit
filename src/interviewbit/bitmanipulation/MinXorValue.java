@@ -19,17 +19,17 @@ public class MinXorValue {
         Map<Integer, TrieBit> children;
         int value; // used in leaf node
 
-        public TrieBit() {
+        TrieBit() {
             children = new HashMap<>();
         }
     }
 
-    public TrieBit newNode() {
+    private TrieBit newNode() {
         TrieBit tb = new TrieBit();
         return tb;
     }
 
-    public void insertIterative(TrieBit root, int key) {
+    private void insertIterative(TrieBit root, int key) {
         TrieBit currentNode = root;
         // start from the most significant bit, 
         // insert all bit of key one-by-one into trie
@@ -51,7 +51,7 @@ public class MinXorValue {
         currentNode.value = key;
     }
 
-    public int minXorUtil(TrieBit root, int key) {
+    private int minXorUtil(TrieBit root, int key) {
         TrieBit currentNode = root;
 
         for (int i = Integer.SIZE - 1; i >= 0; i--) {

@@ -11,9 +11,9 @@ import java.util.ArrayList;
  */
 public class WordBreakTwo {
 
-    ArrayList<String> result;
-    ArrayList<Pair>[] sMap;
-    int len;
+    private ArrayList<String> result;
+    private ArrayList<Pair>[] sMap;
+    private int len;
 
     public ArrayList<String> wordBreak(String input, ArrayList<String> dict) {
         Trie root = new Trie();
@@ -104,7 +104,7 @@ public class WordBreakTwo {
      * Starting at index zero, 
      * recursively check all input substrings against dictionary.
      */
-    private class GreedySolution {
+    public class GreedySolution {
 
         private String input;
         private ArrayList<String> dict;

@@ -12,7 +12,7 @@ import java.util.Collections;
  */
 public class LetterPhone {
 
-    ArrayList<String> allCombo;
+    private ArrayList<String> allCombo;
 
     public ArrayList<String> letterCombinations(String s) {
         allCombo = new ArrayList<>();
@@ -24,7 +24,7 @@ public class LetterPhone {
         return allCombo;
     }
 
-    public void convert(String s, int i, char[] ca) {
+    private void convert(String s, int i, char[] ca) {
         if (i == s.length()) {
             allCombo.add(new String(ca));
             return;

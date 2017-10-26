@@ -11,7 +11,7 @@ import interviewbit.datastructures.TreeNode;
  */
 public class LeastCommonAncestor {
 
-    boolean foundx, foundy;
+    private boolean foundx, foundy;
 
     public int lca(TreeNode tn, int val1, int val2) {
         foundx = foundy = false;
@@ -23,7 +23,7 @@ public class LeastCommonAncestor {
         }
     }
 
-    public TreeNode traverse(TreeNode root, int x, int y) {
+    private TreeNode traverse(TreeNode root, int x, int y) {
         // base case
         if (root == null) {
             return null;

@@ -45,7 +45,7 @@ public class PainterPartitionProblem {
         return mod.intValue();
     }
     // return if job can be done in alloted time
-    public boolean isPossible(int p, int time, ArrayList<Integer> arr) {
+    private boolean isPossible(int p, int time, ArrayList<Integer> arr) {
         int count = 0;
         for (int i = 0; i < arr.size(); i++) {
             if (count + arr.get(i) <= time) {
@@ -213,7 +213,7 @@ public class PainterPartitionProblem {
     }
     // get sum of units to be painted from start to end (inclusively)
     // use % 10000003 to avoid bit overflow
-    public int rangeSum(ArrayList<Integer> arr, int start, int end) {
+    private int rangeSum(ArrayList<Integer> arr, int start, int end) {
         int total = 0;
         for (int i = start; i <= end; i++) {
             total += arr.get(i);
@@ -225,7 +225,7 @@ public class PainterPartitionProblem {
     
     
     
-    public int[] rightAr; // global array
+    private int[] rightAr; // global array
     public int paintRecustion(int p, int pt, ArrayList<Integer> arr) {
         rightAr = new int[arr.size()];
         rightAr[0] = arr.get(0);
@@ -239,7 +239,7 @@ public class PainterPartitionProblem {
         BigInteger mod = pro.mod(new BigInteger("10000003"));
         return mod.intValue();
     }
-    public int paintRecursion(ArrayList<Integer> arr, int length, int p){
+    private int paintRecursion(ArrayList<Integer> arr, int length, int p){
         // base case
         if (length == 0) {
             return arr.get(0);

@@ -53,7 +53,7 @@ public class CountPermutationsofBST {
         return (int) dp[A][B];
     }
 
-    public void combine() {
+    private void combine() {
         comb[0][0] = 1;
         for (int i = 1; i < comb.length; i++) {
             comb[i][0] = 1;
@@ -66,7 +66,7 @@ public class CountPermutationsofBST {
     }
 
     /* matrix indices must be int or lossy conversion error */
-    private static class RecursiveSolution {
+    public static class RecursiveSolution {
 
         static long[][] comb = new long[51][51];
 

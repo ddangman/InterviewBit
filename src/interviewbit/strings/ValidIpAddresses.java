@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class ValidIpAddresses {
 
-    ArrayList<String> al;
+    private ArrayList<String> al;
 
     public ArrayList<String> restoreIpAddresses(String a) {
         al = new ArrayList<>();
@@ -20,7 +20,7 @@ public class ValidIpAddresses {
         return al;
     }
 
-    public boolean findIp(String a, int i, int dot, int[] array) {
+    private boolean findIp(String a, int i, int dot, int[] array) {
         // valid dot placements
         if (dot == 3) {
             if (valid(a, i, a.length())) {
@@ -43,7 +43,7 @@ public class ValidIpAddresses {
         return false;
     }
 
-    public boolean valid(String a, int i, int j) {
+    private boolean valid(String a, int i, int j) {
         if (i >= j) {
             return false;
         }
@@ -52,21 +52,21 @@ public class ValidIpAddresses {
         }
         if (j > a.length()) {
             return false;
-        }        
-        
+        }
+
         if (a.charAt(i) == '0') {
             if (j - i == 1) {
                 return true;
-            }            
+            }
             return false;
-        }  
+        }
 
         int n = Integer.parseInt(a.substring(i, j));
 
         return (n <= 255);
     }
 
-    public void saveIp(String a, int[] array) {
+    private void saveIp(String a, int[] array) {
         StringBuilder sb = new StringBuilder();
         int i = 0;
         for (int j = 0; j < 3; j++) {

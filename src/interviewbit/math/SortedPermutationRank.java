@@ -31,7 +31,7 @@ public class SortedPermutationRank {
         return (int) res % 1000003;
     }
 
-    public static long factorial(int n) {
+    private long factorial(int n) {
         long fact = 1; // this  will be the result
         for (int i = 1; i <= n; i++) {
             // prevent bit overflow
@@ -43,7 +43,7 @@ public class SortedPermutationRank {
         return fact % 1000003;
     }
 
-    int binarySearch(char[] a, char key) {
+    private int binarySearch(char[] a, char key) {
         int low = 0;
         int high = a.length - 1;
 
@@ -82,7 +82,7 @@ public class SortedPermutationRank {
         return res.intValue();
     }
 
-    public BigInteger bigFactorial(int n) {
+    private BigInteger bigFactorial(int n) {
         BigInteger fact = BigInteger.valueOf(1); // this  will be the result
         for (int i = 1; i <= n; i++) {
             fact.multiply(BigInteger.valueOf(i));

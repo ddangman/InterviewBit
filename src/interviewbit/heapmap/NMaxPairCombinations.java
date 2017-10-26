@@ -20,7 +20,7 @@ import java.util.stream.IntStream;
  */
 public class NMaxPairCombinations {
 
-    public class Index {
+    private class Index {
 
         public int first;
         public int second;

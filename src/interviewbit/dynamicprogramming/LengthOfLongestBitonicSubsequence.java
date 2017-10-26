@@ -37,7 +37,7 @@ public class LengthOfLongestBitonicSubsequence {
         return max;
     }
 
-    public int binSearchIndex(int a[], int low, int high, int x) {
+    private int binSearchIndex(int a[], int low, int high, int x) {
         while (low < high) {
             int mid = low + (high - low) / 2;
             if (a[mid] < x) {
@@ -60,7 +60,7 @@ public class LengthOfLongestBitonicSubsequence {
      * @param input The target array.
      * @return An array of LIS results.
      */
-    public int[] lisArray(List<Integer> input) { // O(n*logn) {
+    private int[] lisArray(List<Integer> input) { // O(n*logn) {
         // searchArray stores input.get(values) in increasing order
         // searchArray index + 1 equals length of best LIS
         // searchArray[value] stores lowest possible input.value for LIS length
@@ -93,7 +93,7 @@ public class LengthOfLongestBitonicSubsequence {
         return lis;
     }
 
-    public int[] ldsArray(List<Integer> input) {
+    private int[] ldsArray(List<Integer> input) {
         ArrayList<Integer> reverse = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             reverse.add(input.get(size - i - 1));
@@ -105,7 +105,7 @@ public class LengthOfLongestBitonicSubsequence {
      * Solution that does not copy input in reverse order.
      * Longest Decreasing Subsequence has its own generation function.
      */
-    class noReverseCopy {
+    public class noReverseCopy {
 
         private int n;
         private List<Integer> input;
@@ -131,7 +131,7 @@ public class LengthOfLongestBitonicSubsequence {
             return max;
         }
 
-        public int[] generateLIS() {
+        private int[] generateLIS() {
             int[] util = new int[n];
             int[] lis = new int[n];
             int len = 0;
@@ -153,7 +153,7 @@ public class LengthOfLongestBitonicSubsequence {
             return lis;
         }
 
-        public int[] generateLDS() {
+        private int[] generateLDS() {
             int[] util = new int[n];
             int[] lds = new int[n];
             int len = 0;

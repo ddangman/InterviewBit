@@ -14,7 +14,7 @@ public class QueenAttack {
     private int row;
     private int col;
     private int[][][] dp;
-    ArrayList<String> input;
+    private ArrayList<String> input;
 
     public ArrayList<ArrayList<Integer>> queenAttack(ArrayList<String> a) {
         row = a.size();

@@ -11,14 +11,14 @@ import interviewbit.datastructures.TreeNode;
  */
 public class BalancedBinaryTree {
 
-    boolean invalid;
+    private boolean invalid;
 
     public int isBalanced(TreeNode a) {
         countHeight(a);
         return invalid ? 0 : 1;
     }
 
-    public int countHeight(TreeNode tn) {
+    private int countHeight(TreeNode tn) {
         if (tn == null) {
             return 0;
         }

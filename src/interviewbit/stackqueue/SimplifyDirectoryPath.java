@@ -40,7 +40,7 @@ public class SimplifyDirectoryPath {
         return dir;
     }
 
-    public void dqUtil(String s, Deque<String> dq) {
+    private void dqUtil(String s, Deque<String> dq) {
         switch (s) {
             case "/..":
                 dq.pollLast();

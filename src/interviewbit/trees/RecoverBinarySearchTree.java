@@ -13,8 +13,8 @@ import java.util.Arrays;
  */
 public class RecoverBinarySearchTree {
 
-    int visit, wrong1, wrong2;
-    boolean firstFault;
+    private int visit, wrong1, wrong2;
+    private boolean firstFault;
 
     public ArrayList<Integer> recoverTree(TreeNode root) {
         TreeNode ptr;
@@ -51,7 +51,7 @@ public class RecoverBinarySearchTree {
         return new ArrayList<>(Arrays.asList(wrong1, wrong2));
     }
 
-    public boolean visitRoot(int v) {
+    private boolean visitRoot(int v) {
         if (v < visit) {
             if (!firstFault) {
                 // assign both wrong values in case swapped pairs are adjacent

@@ -59,7 +59,7 @@ public class MaxProductSubarray {
         return max;
     }
     
-    public int maxSegment(final List<Integer> a, int start, int end) {
+    private int maxSegment(final List<Integer> a, int start, int end) {
         int max = a.get(start);
         int n = end - start + 1;
         int[][] dp = new int[n][n];

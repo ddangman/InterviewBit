@@ -11,10 +11,10 @@ import java.util.HashMap;
  */
 public class LeastRecentlyUsedCache {
 
-    int capacity;
-    HashMap<Integer, Node> map = new HashMap<Integer, Node>();
-    Node head = null;
-    Node end = null;
+    private int capacity;
+    private HashMap<Integer, Node> map = new HashMap<Integer, Node>();
+    private Node head = null;
+    private Node end = null;
 
     public LeastRecentlyUsedCache(int capacity) {
         this.capacity = capacity;
@@ -82,14 +82,14 @@ public class LeastRecentlyUsedCache {
         }
     }
 
-    class Node {
+    private class Node {
 
         int key;
         int value;
         Node pre;
         Node next;
 
-        public Node(int key, int value) {
+        Node(int key, int value) {
             this.key = key;
             this.value = value;
         }

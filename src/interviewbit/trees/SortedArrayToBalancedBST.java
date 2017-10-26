@@ -16,7 +16,7 @@ public class SortedArrayToBalancedBST {
         return build(a, 0, a.size());
     }
 
-    public TreeNode build(final List<Integer> a, int start, int end) {
+    private TreeNode build(final List<Integer> a, int start, int end) {
         // base case
         if (start > end || start >= a.size()) {
             return null;

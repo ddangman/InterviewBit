@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class RootToLeafPathsWithSum {
 
-    ArrayList<ArrayList<Integer>> validPaths;
+    private ArrayList<ArrayList<Integer>> validPaths;
 
     public ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
         validPaths = new ArrayList<>();
@@ -22,7 +22,7 @@ public class RootToLeafPathsWithSum {
         return validPaths;
     }
 
-    public void findPath(TreeNode root, ArrayList<Integer> path, int sum) {
+    private void findPath(TreeNode root, ArrayList<Integer> path, int sum) {
         if (root == null) { // exit condition
             return;
         }

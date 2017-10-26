@@ -63,7 +63,7 @@ public class ImplementStrStr {
         }
     }
 
-    public boolean charCompare(final String haystack, final String needle, int i) {
+    private boolean charCompare(final String haystack, final String needle, int i) {
         int j = 0;
         while (j < needle.length()) {
             if (needle.charAt(j) != haystack.charAt(i)) {

@@ -51,7 +51,7 @@ public class MergeOverlappingIntervals {
         return keep;
     }
 
-    public void printSort(ArrayList<Interval> intervals) {
+    private void printSort(ArrayList<Interval> intervals) {
         Collections.sort(intervals, (o1, o2)
                 -> o1.start == o2.start ? o1.end - o2.end : o1.start - o2.start);
         for (Interval i : intervals) {
@@ -61,7 +61,7 @@ public class MergeOverlappingIntervals {
 
     // if intervals.start is sorted and n is index of intervals
     // returns index of first Interval where .end is less than n.start or equal
-    public int binarySearchStart(ArrayList<Interval> intervals, int n) {
+    private int binarySearchStart(ArrayList<Interval> intervals, int n) {
         int start = 0;
         int end = n;
         int mid = -1;
@@ -83,7 +83,7 @@ public class MergeOverlappingIntervals {
 
     // if intervals.start is sorted and n is index of intervals
     // returns index of first Interval where .start is less than n.end or equal
-    public int binarySearchEnd(ArrayList<Interval> intervals, int n) {
+    private int binarySearchEnd(ArrayList<Interval> intervals, int n) {
         int start = 0;
         int end = n;
         int mid = -1;
@@ -103,17 +103,17 @@ public class MergeOverlappingIntervals {
         return mid;
     }
 
-    public static class Interval implements Comparable<Interval> {
+    private static class Interval implements Comparable<Interval> {
 
-        public int start;
-        public int end;
+        int start;
+        int end;
 
         Interval() {
             start = 0;
             end = 0;
         }
 
-        public Interval(int s, int e) {
+        Interval(int s, int e) {
             start = s;
             end = e;
         }

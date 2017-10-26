@@ -32,12 +32,12 @@ public class LRUcacheTester {
 
     public class Solution {
 
-        class DoublyLinkedList {
+        private class DoublyLinkedList {
 
-            int key;
-            int value;
-            DoublyLinkedList next;
-            DoublyLinkedList prev;
+            private int key;
+            private int value;
+            private DoublyLinkedList next;
+            private DoublyLinkedList prev;
 
             DoublyLinkedList(int k, int v) {
                 this.key = k;

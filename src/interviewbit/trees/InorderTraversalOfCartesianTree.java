@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class InorderTraversalOfCartesianTree {
 
-    class IterativeInsertion {
+    public class IterativeInsertion {
 
         public TreeNode buildTreeIterative(ArrayList<Integer> input) {
             TreeNode root = new TreeNode(input.get(0));
@@ -143,7 +143,7 @@ public class InorderTraversalOfCartesianTree {
         return node;
     }
 
-    class QuadraticRecursion {
+    public class QuadraticRecursion {
 
         public TreeNode buildTreeQuad(ArrayList<Integer> arr) {
             if (arr.isEmpty()) {
@@ -152,7 +152,7 @@ public class InorderTraversalOfCartesianTree {
             return build(arr, 0, arr.size() - 1);
         }
 
-        public TreeNode build(ArrayList<Integer> arr, int start, int end) {
+        private TreeNode build(ArrayList<Integer> arr, int start, int end) {
             if (end < start) {
                 return null;
             }

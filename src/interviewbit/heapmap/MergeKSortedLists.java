@@ -50,7 +50,7 @@ public class MergeKSortedLists {
         return primer.next;
     }
 
-    class ListNode {
+    public class ListNode {
 
         public int val;
         public ListNode next;

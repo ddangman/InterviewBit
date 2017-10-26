@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class MaxConsecutiveGap {
 
-    class Bucket {
+    private class Bucket {
 
         int low;
         int high;

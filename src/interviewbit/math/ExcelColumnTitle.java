@@ -28,7 +28,7 @@ public class ExcelColumnTitle {
         return getStringRepresentation(cAr);
     }
 
-    String getStringRepresentation(ArrayList<Character> list) {
+    private String getStringRepresentation(ArrayList<Character> list) {
         StringBuilder builder = new StringBuilder(list.size());
         for (Character ch : list) {
             builder.append(ch);

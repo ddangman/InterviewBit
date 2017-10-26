@@ -48,7 +48,7 @@ public class SortList {
         return merged;
     }
 
-    public ListNode merge(ListNode h1, ListNode h2) {
+    private ListNode merge(ListNode h1, ListNode h2) {
         ListNode primer = new ListNode(0);
         ListNode pointer = primer;
         while (h1 != null || h2 != null) {

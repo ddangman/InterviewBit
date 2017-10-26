@@ -14,10 +14,10 @@ import java.util.HashSet;
  */
 public class FourSum {
 
-    ArrayList<ArrayList<Integer>> result;
-    ArrayList<Integer> input;
-    int length;
-    int max;
+    private ArrayList<ArrayList<Integer>> result;
+    private ArrayList<Integer> input;
+    private int length;
+    private int max;
 
     public ArrayList<ArrayList<Integer>> fourSum(ArrayList<Integer> input, int target) {
         result = new ArrayList<>();
@@ -62,7 +62,7 @@ public class FourSum {
      * in sorted array input between indices low and length. 
      * If there are, add all of them into the ArrayList result.
      */
-    public void threeSumForFourSum(int low, int target, int a) {
+    private void threeSumForFourSum(int low, int target, int a) {
         if (low + 2 > length) {
             return;
         }
@@ -97,7 +97,7 @@ public class FourSum {
      * in sorted array input between indices low and length. 
      * If there are, add all of them into the ArrayList result.
      */
-    public void twoSumForFourSum(int low, int target, int a, int b) {
+    private void twoSumForFourSum(int low, int target, int a, int b) {
         if (low + 1 > length) {
             return;
         }

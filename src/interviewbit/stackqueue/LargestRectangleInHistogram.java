@@ -12,7 +12,7 @@ import java.util.Stack;
  */
 public class LargestRectangleInHistogram {
 
-    int maxArea;
+    private int maxArea;
 
     public int largestRectangleArea(ArrayList<Integer> a) {
         // stack contains indices of increasing heights
@@ -37,7 +37,7 @@ public class LargestRectangleInHistogram {
     }
 
     // 'i' is explored length of array 'a'
-    public void findArea(ArrayList<Integer> a, Stack<Integer> stack, int i) {
+    private void findArea(ArrayList<Integer> a, Stack<Integer> stack, int i) {
         int area = 0;
         int height = a.get(stack.pop()); // greatest height
         if (stack.isEmpty()) {

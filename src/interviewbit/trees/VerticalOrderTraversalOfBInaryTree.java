@@ -57,7 +57,7 @@ public class VerticalOrderTraversalOfBInaryTree {
         return vertical;
     }
 
-    class Pair {
+    private class Pair {
 
         final int x; // vertical position relative to root as zero
         final TreeNode node;

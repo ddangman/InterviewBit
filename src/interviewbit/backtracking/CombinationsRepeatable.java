@@ -11,9 +11,9 @@ import java.util.ArrayList;
  */
 public class CombinationsRepeatable {
 
-    ArrayList<ArrayList<Integer>> allCombo;
-    int n;
-    int k;
+    private ArrayList<ArrayList<Integer>> allCombo;
+    private int n;
+    private int k;
 
     public ArrayList<ArrayList<Integer>> combine(int n, int k) {
         allCombo = new ArrayList<>();
@@ -26,7 +26,7 @@ public class CombinationsRepeatable {
         return allCombo;
     }
 
-    public void generate(ArrayList<Integer> build, int level) {
+    private void generate(ArrayList<Integer> build, int level) {
         if (build.size() == k) {
             allCombo.add(new ArrayList<>(build));
             return;

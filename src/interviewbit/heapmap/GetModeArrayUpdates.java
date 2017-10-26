@@ -14,8 +14,8 @@ import java.util.TreeMap;
  */
 public class GetModeArrayUpdates {
 
-    HashMap<Integer, Integer> map;
-    TreeMap<Integer, TreeMap<Integer, Integer>> mapmap;
+    private HashMap<Integer, Integer> map;
+    private TreeMap<Integer, TreeMap<Integer, Integer>> mapmap;
 
     public ArrayList<Integer> getMode(ArrayList<Integer> A, ArrayList<ArrayList<Integer>> B) {
         // key: element, value: frequency

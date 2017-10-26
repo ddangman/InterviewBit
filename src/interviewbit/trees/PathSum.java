@@ -15,7 +15,7 @@ public class PathSum {
         return PathSum(root, target) ? 1 : 0;
     }
     
-    public boolean PathSum(TreeNode root, int sum) {
+    private boolean PathSum(TreeNode root, int sum) {
         if(root == null) {
             return false;
         }

@@ -19,7 +19,7 @@ public class MinimumDepthOfBinaryTree {
         return min;
     }
 
-    public void findDepth(TreeNode tn, int level) {
+    private void findDepth(TreeNode tn, int level) {
         if (tn == null) {
             return;
         }

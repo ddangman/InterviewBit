@@ -34,7 +34,7 @@ public class CountingTriangles {
     }
     
     // returns index of all numbers less than max
-    public int biSearchUpper(ArrayList<Integer> A, int max) {
+    private int biSearchUpper(ArrayList<Integer> A, int max) {
         int start = 0;
         int end = A.size() - 1;
         int mid = 0;
@@ -56,7 +56,7 @@ public class CountingTriangles {
     }
     
     // return index of allNumbers >= min
-    public int biSearchBottom(ArrayList<Integer> A, int min) {
+    private int biSearchBottom(ArrayList<Integer> A, int min) {
         int start = 0;
         int absoluteStart = start;
         int end = A.size() - 1;

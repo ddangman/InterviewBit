@@ -15,7 +15,7 @@ public class MaximumDepthOfBinaryTree {
         return findDepth(a, 0);
     }
     
-    public int findDepth(TreeNode tn, int depth) {
+    private int findDepth(TreeNode tn, int depth) {
         if (tn == null) {
             return depth;
         }        

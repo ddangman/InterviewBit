@@ -10,8 +10,8 @@ import java.util.Set;
 
 /**
  * Given an array with non negative numbers, divide the array into two parts
- * such that the average of both the parts is equal. Return both parts (If
- * exist). If there is no solution. return an empty list.
+ * such that the average of both the parts is equal. Return both parts (if
+ * possible). If there is no solution. return an empty list.
  * 
  * s1 = sum of partition 1, s2 = sum of partition 2
  * n1 = number of items in partition 1, n2 = number of items in partition 2
@@ -60,7 +60,7 @@ public class EqualAveragePartition {
         // iterate for third state : size of setA which varies from 1 to n-1
         for (int sizeA = 1; sizeA < n; sizeA++) { // sizeA should not be zero
             if ((sum * sizeA) % n != 0) {
-                continue; // sizeA will yield invalid sumA (has remainder)
+                continue; // sizeA will yield incorrect sumA (dropped remainder)
             }
 
             // sumA/sizeA == sumAll/sizeAll
@@ -140,13 +140,13 @@ public class EqualAveragePartition {
         return this.dp[index][sumA][sizeA];
     }
 
-    static class moreEfficient {
+    public static class moreEfficient {
         // same logic as outer class, but does not repeat dp[true]
 
         private int n;
-        private int sumt;
+        private int sumAll;
         private int[][][] dp;
-        private ArrayList<Integer> a;
+        private ArrayList<Integer> sorted;
         private ArrayList<Integer> indexA;
         // 1 is possible, -1 is invalid, 0 is undetermined
         private ArrayList<ArrayList<Integer>> result;
@@ -158,18 +158,18 @@ public class EqualAveragePartition {
             }
             Collections.sort(A);
             this.n = A.size();
-            this.a = A;
+            this.sorted = A;
             this.indexA = new ArrayList<>();
-            this.sumt = a.stream().mapToInt(Integer::intValue).sum();
+            this.sumAll = sorted.stream().mapToInt(Integer::intValue).sum();
             // build matrix: index, sum of array, size of array
-            this.dp = new int[n][sumt][n];
+            this.dp = new int[n][sumAll][n];
 
             for (int size1 = 1; size1 < n; size1++) {
-                if ((size1 * sumt) % n != 0) {
+                if ((size1 * sumAll) % n != 0) {
                     continue;
                 }
 
-                int sum1 = (sumt * size1) / n;
+                int sum1 = (sumAll * size1) / n;
 
                 if (isPossible(0, sum1, size1)) {
                     generateResults();
@@ -180,32 +180,34 @@ public class EqualAveragePartition {
             return result;
         }
 
-        private boolean isPossible(int index, int sum, int size) {
-            if (size == 0) {
-                return sum == 0;
+        private boolean isPossible(int index, int sum1, int size1) {
+            if (size1 == 0) {
+                return sum1 == 0;
             }
             if (index >= n) {
                 return false;
             }
-            if (dp[index][sum][size] != 0) {
-                return dp[index][sum][size] == 1;
+            if (dp[index][sum1][size1] != 0) {
+                return dp[index][sum1][size1] == 1;
             }
 
-            int now = a.get(index);
-            if (sum >= now) {
+            int element = sorted.get(index);
+            if (sum1 >= element) { // use element if sum allows
                 indexA.add(index);
-                if (isPossible(index + 1, sum - now, size - 1)) {
-                    dp[index][sum][size] = 1;
+                // increment index, reduce sum1 by element, decrement size1
+                if (isPossible(index + 1, sum1 - element, size1 - 1)) {
+                    dp[index][sum1][size1] = 1;
                     return true;
                 }
                 indexA.remove(indexA.size() - 1);
             }
-            if (isPossible(index + 1, sum, size)) {
-                dp[index][sum][size] = 1;
+            // increment index, no change to sum1, no change to size1
+            if (isPossible(index + 1, sum1, size1)) {
+                dp[index][sum1][size1] = 1;
                 return true;
             }
 
-            dp[index][sum][size] = -1;
+            dp[index][sum1][size1] = -1;
             return false;
         }
 
@@ -216,10 +218,10 @@ public class EqualAveragePartition {
             int as = indexA.size();
             for (int i = 0; i < n; i++) {
                 if (ptr < as && i == indexA.get(ptr)) {
-                    setA.add(a.get(i));
+                    setA.add(sorted.get(i));
                     ptr++;
                 } else {
-                    setB.add(a.get(i));
+                    setB.add(sorted.get(i));
                 }
             }
 
@@ -228,7 +230,7 @@ public class EqualAveragePartition {
         }
     }
 
-    static class noMemoization {
+    public static class noMemoization {
 
         public ArrayList<ArrayList<Integer>> avgset(ArrayList<Integer> array) {
             ArrayList<ArrayList<Integer>> result = new ArrayList<>();

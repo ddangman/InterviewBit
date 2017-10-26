@@ -23,7 +23,7 @@ public class ShortestCommonSuperstring {
         return A.get(0).length();
     }
 
-    public void mergeWords(ArrayList<String> A) {
+    private void mergeWords(ArrayList<String> A) {
         int w11 = 0, w22 = 0;
         int max = -1;
         boolean isWord2Suffix = false;

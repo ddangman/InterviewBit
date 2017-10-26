@@ -68,7 +68,7 @@ public class LargestDistanceBetweenTreeNodes {
     }
     
     
-    private int dynamicProgramming(ArrayList<Integer> A) {
+    public int dynamicProgramming(ArrayList<Integer> A) {
         int[] dp = new int[A.size()]; // store length to deepest child
         int max = 0; // store maximum distance between two nodes
         

@@ -9,15 +9,15 @@ package interviewbit.stackqueue;
  */
 public class MyStackClass {
 
-    jStack root;
-    int minimum;
+    private jStack root;
+    private int minimum;
 
     public void MinStack() {
         root = null;
         this.minimum = -1;
     }
 
-    public class jStack {
+    private class jStack {
 
         int value;
         jStack next = null;

@@ -34,7 +34,7 @@ public class SumOfFibonacciNumbers {
         buildFib();
     }
     
-    // use greedy subtration to find minimum numbers needed
+    // use greedy subtraction to find minimum numbers needed
     private int greedy() {
         int count = 0;
         while (0 < target) {

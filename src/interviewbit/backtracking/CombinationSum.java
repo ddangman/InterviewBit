@@ -13,9 +13,9 @@ import java.util.HashSet;
  */
 public class CombinationSum {
     
-    ArrayList<ArrayList<Integer>> allCombos;
-    ArrayList<Integer> input;
-    int target;
+    private ArrayList<ArrayList<Integer>> allCombos;
+    private ArrayList<Integer> input;
+    private int target;
 
     public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> a, int b) {
         
@@ -30,7 +30,7 @@ public class CombinationSum {
         return allCombos;
     }
     
-    public void generateCombo(int sum, int index, ArrayList<Integer> build) {
+    private void generateCombo(int sum, int index, ArrayList<Integer> build) {
         if (sum == target) {
             allCombos.add(new ArrayList<>(build));
             return;
@@ -47,7 +47,7 @@ public class CombinationSum {
         }
     }
 
-    public void removeDuplicates(ArrayList<Integer> a) {
+    private void removeDuplicates(ArrayList<Integer> a) {
         boolean needSwap = false;
         int copy = a.get(0);
         int i = 0;
@@ -76,11 +76,11 @@ public class CombinationSum {
         }
     }
 
-    class HashSolution {
+    public class HashSolution {
 
-        HashSet<ArrayList<Integer>> set;
-        ArrayList<Integer> input;
-        int target;
+        private HashSet<ArrayList<Integer>> set;
+        private ArrayList<Integer> input;
+        private int target;
 
         public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> a, int b) {
             Collections.sort(a);
@@ -110,7 +110,7 @@ public class CombinationSum {
             return allCombo;
         }
 
-        public void generate(ArrayList<Integer> build, int sum, int index) {
+        private void generate(ArrayList<Integer> build, int sum, int index) {
             if (sum > target) {
                 return;
             } else if (sum == target) {

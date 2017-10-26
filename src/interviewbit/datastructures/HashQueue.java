@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public class HashQueue<E> extends LinkedList<E> {
 
-    HashSet<E> set = new HashSet<>();
+    private HashSet<E> set = new HashSet<>();
 
     @Override
     public boolean offerLast(E e) {

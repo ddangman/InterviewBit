@@ -21,7 +21,7 @@ public class DivideIntegers {
         return (int) res;
     }
 
-    public long add(long a, long b) {
+    private long add(long a, long b) {
         long partialSum, carry;
         do {
             // Sum of bits of a and b where at least one of the bits is not set
@@ -37,14 +37,14 @@ public class DivideIntegers {
         return partialSum;
     }
 
-    public long subtract(long a, long b) {
+    private long subtract(long a, long b) {
         return add(a, add(~b, 1));
     }
 
     // The steps are similar to how you would perform long division in decimal and in fact, 
     // long division is easier in binary since the quotient at each bit can only be 0 or 1.
     // assume 32 bits 2's complement integer
-    public long division(long dividend, long divisor) {
+    private long division(long dividend, long divisor) {
         boolean negative = false;
         if ((dividend & (1 << 31)) == (1 << 31)) { // Check for signed bit
             negative = !negative;

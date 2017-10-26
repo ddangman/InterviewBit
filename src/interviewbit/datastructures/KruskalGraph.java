@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class KruskalGraph {
 
     // A class to represent a graph edge
-    class Edge implements Comparable<Edge> {
+    private class Edge implements Comparable<Edge> {
 
         int src, dest, weight;
         Edge(int s, int d, int w) {
@@ -31,13 +31,13 @@ public class KruskalGraph {
     };
 
     // A class to represent a vector subset for union-find
-    class Vector {
+    private class Vector {
 
         int parent, rank;
     };
 
-    int V, E, Z;    // V-> no. of vertices & E->no.of edges
-    Edge edge[]; // collection of all edges
+    private int V, E, Z;    // V-> no. of vertices & E->no.of edges
+    private Edge edge[]; // collection of all edges
 
     // Creates a graph with V vertices and E edges
     public KruskalGraph(int v, ArrayList<ArrayList<Integer>> edges, int z) {
@@ -63,7 +63,7 @@ public class KruskalGraph {
 
     // A utility function to find set of an element i
     // (uses path compression technique)
-    int find(Vector subsets[], int i) {
+    private int find(Vector subsets[], int i) {
         // find root and make root as parent of i (path compression)
         if (subsets[i].parent != i) {
             subsets[i].parent = find(subsets, subsets[i].parent);
@@ -74,7 +74,7 @@ public class KruskalGraph {
 
     // A function that does union of two sets of x and y
     // (uses union by rank)
-    void Union(Vector subsets[], int x, int y) {
+    private void Union(Vector subsets[], int x, int y) {
 
         // Attach smaller rank tree under root of high rank tree
         // (Union by Rank)

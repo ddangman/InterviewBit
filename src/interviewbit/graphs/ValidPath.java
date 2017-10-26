@@ -4,127 +4,131 @@
 package interviewbit.graphs;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
+ * Is there a path from bottom/left (0,0) to top/right (X,Y) without touching
+ * circles? There are 'n' circles with radius 'R'. Coordinates are in
+ * corresponding index of first array(x) and second(y)
+ *
+ * Solution: Combine intersecting circles into sets. If any set intersects
+ * top/bottom, top/right, left/right, left,bottom no path exists
  *
  * @author Duy Dang
  */
 public class ValidPath {
 
-    int xmax;
-    int ymax;
-    ArrayList<Integer> E;
-    ArrayList<Integer> F;
-    long radsqr;
-    int n;
-    public String solve(int xmax, int ymax, int n, int r, ArrayList<Integer> E, ArrayList<Integer> F) {
-        if (xmax == 0 || ymax == 0) {
-            return "NO";
-        }
-        this.xmax = xmax;
-        this.ymax = ymax;
-        this.E = E;
-        this.F = F;
-        radsqr = r * r;
-        this.n = n;
-        boolean[][] grid = new boolean[xmax][ymax];
-        LinkedList<Pair> ll = new LinkedList<>();
-        grid[0][0] = inCircle(0, 0);
-        if (!grid[0][0]) {
-            qNeighbors(grid, ll, 0, 0);
-        }
-        grid[xmax - 1][ymax - 1] = inCircle(xmax - 1, ymax - 1);
-        if (grid[xmax - 1][ymax - 1]) {
-            return "NO";
-        }
+    private int x, y, n, r;
+    private int[] rep; // holds set representative
+    private boolean[] visited; // visited set
+    private ArrayList<Integer> X, Y;
 
-        while (!ll.isEmpty()) {
-            Pair pop = ll.pop();
-            qNeighbors(grid, ll, pop.x, pop.y);
-            if (grid[xmax - 1][ymax - 1]) {
-                return "YES";
+    public String solve(int A, int B, int C, int D, ArrayList<Integer> E, ArrayList<Integer> F) {
+        init(A, B, C, D, E, F);
+        int R = D * D * 4; // R = c^2. c = 2r
+
+        for (int i = 0; i < n; i++) {
+            int x1 = X.get(i);
+            int y1 = Y.get(i);
+            for (int j = i + 1; j < n; j++) {
+                int x2 = X.get(j);
+                int y2 = Y.get(j);
+
+                int dx = x2 - x1; // difference x
+                int dy = y2 - y1; // difference y
+                // two circles belong in same set if their centers are less than
+                // 2R apart. Determined by: a^2 + b^2 = c^2
+                if (dx * dx + dy * dy <= R) {
+                    union(i, j);
+                }
             }
         }
 
-        return "NO";
+        for (int i = 0; i < n; i++) { // update set representatives
+            rep[i] = getRep(i);
+        }
+
+        for (int i = 0; i < n; i++) {
+            int set = rep[i]; // iterate all set representatives
+            if (!visited[set]) { // skip shared sets
+                visited[set] = true;
+                if (isBlocked(set)) {
+                    return "NO";
+                }
+            }
+        }
+
+        return "YES";
     }
 
-    private boolean inCircle(int x, int y) {
+    private boolean isBlocked(int set) {
+        // initialize values opposite limit
+        int up = Integer.MIN_VALUE;
+        int down = Integer.MAX_VALUE;
+        int right = Integer.MIN_VALUE;
+        int left = Integer.MAX_VALUE;
+//        int up = -1;
+//        int down = Y;
+//        int left = X;
+//        int right = -1;
+
         for (int i = 0; i < n; i++) {
-            int e = Math.abs(E.get(i) - x);
-            int f = Math.abs(F.get(i) - y);
-            long distance = e * e * f * f;
-            if (distance < radsqr) {
-                return true;
+            if (getRep(i) == set) {
+                // use greedy to find axial limits of sets
+                up = Math.max(up, Y.get(i) + r);
+                down = Math.min(down, Y.get(i) - r);
+                right = Math.max(right, X.get(i) + r);
+                left = Math.min(left, X.get(i) - r);
             }
         }
+
+        // if set intersects grid border, it can create blockage
+        boolean upblock = up >= y;
+        boolean downblock = down <= 0;
+        boolean rightblock = right >= x;
+        boolean leftblock = left <= 0;
+
+        // if set intersects two grid borders, path to corner or edge is blocked
+        if ((upblock && downblock)
+                || (upblock && rightblock)
+                || (leftblock && rightblock)
+                || (leftblock && downblock)) {
+            return true;
+        }
+
         return false;
     }
 
-    private void qNeighbors(boolean[][] grid, LinkedList<Pair> ll, int x, int y) {
-        boolean top = y + 1 < ymax;
-        boolean bottom = y > 0;
-        boolean left = x > 0;
-        boolean right = x + 1 < xmax;
-        if (top && !grid[x][y + 1]) {
-            if (!inCircle(x, y + 1)) {
-                ll.add(new Pair(x, y + 1));
-            }            
-            grid[x][y + 1] = true;
+    private void init(int A, int B, int C, int D, ArrayList<Integer> E, ArrayList<Integer> F) {
+        this.x = A;
+        this.y = B;
+        this.r = D;
+        this.n = C;
+        this.X = E;
+        this.Y = F;
+
+        this.rep = new int[n];
+        for (int i = 0; i < n; i++) {
+            rep[i] = i; // initialize set representative as self
         }
-        if (bottom && !grid[x][y - 1]) {
-            if (!inCircle(x, y - 1)) {
-                ll.add(new Pair(x, y - 1));
-            }            
-            grid[x][y - 1] = true;
-        }
-        if (right && !grid[x + 1][y]) {
-            if (!inCircle(x + 1, y)) {
-                ll.add(new Pair(x + 1, y));
-            }            
-            grid[x + 1][y] = true;
-        }
-        if (left && !grid[x - 1][y]) {
-            if (!inCircle(x - 1, y)) {
-                ll.add(new Pair(x - 1, y));
-            }            
-            grid[x - 1][y] = true;
-        }
-        if (top && right && !grid[x + 1][y + 1]) {
-            if (!inCircle(x + 1, y + 1)) {
-                ll.add(new Pair(x + 1, y + 1));
-            }            
-            grid[x + 1][y + 1] = true;
-        }
-        if (top && left && !grid[x - 1][y + 1]) {
-            if (!inCircle(x - 1, y + 1)) {
-                ll.add(new Pair(x - 1, y + 1));
-            }            
-            grid[x - 1][y + 1] = true;
-        }
-        if (bottom && right && !grid[x + 1][y - 1]) {
-            if (!inCircle(x + 1, y - 1)) {
-                ll.add(new Pair(x + 1, y - 1));
-            }            
-            grid[x + 1][y - 1] = true;
-        }
-        if (bottom && left && !grid[x - 1][y - 1]) {
-            if (!inCircle(x - 1, y - 1)) {
-                ll.add(new Pair(x - 1, y - 1));
-            }            
-            grid[x - 1][y - 1] = true;
-        }
+
+        this.visited = new boolean[n];
     }
 
-    private class Pair {
+    // representative should point to self or recurse until self
+    private int getRep(int r) {
+        if (rep[r] != r) {
+            // traverse up parent and compress path through recursion
+            rep[r] = getRep(rep[r]);
+        }
+        return rep[r];
+    }
 
-        int x;
-        int y;
-
-        Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
+    private void union(int i, int j) {
+        // get set representative
+        i = getRep(i);
+        j = getRep(j);
+        if (i != j) { // union as needed
+            rep[i] = j;
         }
     }
 }

@@ -40,7 +40,7 @@ public class SieveEratosthenes {
         return primes;
     }
 
-    static int countPrimesUpperBound(int max) {
+    private int countPrimesUpperBound(int max) {
         return max > 1 ? (int) (1.25506 * max / Math.log((double) max)) : 0;
     }
 

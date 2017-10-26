@@ -13,8 +13,8 @@ import java.util.Arrays;
  */
 public class IntersectingChordsInACircle {
 
-    int mod = 1000000007;
-    long[] lookUp;
+    private int mod = 1000000007;
+    private long[] lookUp;
 
     public int chordRecursion(int n) {
         lookUp = new long[n + 1];

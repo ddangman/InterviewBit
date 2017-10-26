@@ -51,7 +51,7 @@ public class MaxContinuousOnes {
         return result(start, end);
     }
 
-    public ArrayList<Integer> result(int start, int end) {
+    private ArrayList<Integer> result(int start, int end) {
         ArrayList<Integer> al = new ArrayList<>();
         for (int i = start; i < end; i++) {
             al.add(i);

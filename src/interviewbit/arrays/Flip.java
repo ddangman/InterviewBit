@@ -47,7 +47,7 @@ public class Flip {
     }
 
     // used for debugging
-    public ArrayList<Integer> flipPrint(String s) {
+    private  ArrayList<Integer> flipPrint(String s) {
         int start = 0;
         int startRun = 0;
         int end = 0;
@@ -126,7 +126,7 @@ public class Flip {
         return new ArrayList<>(Arrays.asList(flipStartIndex + 1, flipEndIndex + 1));
     }
 
-    public ArrayList<Integer> flipBitsPrint(String a) {
+    private ArrayList<Integer> flipBitsPrint(String a) {
 
         int maxDiff = 0;
         int flipStartIndex = 0;

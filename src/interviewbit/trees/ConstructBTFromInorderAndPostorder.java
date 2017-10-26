@@ -28,7 +28,7 @@ public class ConstructBTFromInorderAndPostorder {
      * so right recursion must be stacked before left
      * to decrement postorder root index properly */
     // takes start and end index of inorder array
-    public TreeNode buildUtil(int start, int end) {
+    private TreeNode buildUtil(int start, int end) {
         if (end < start || pri < 0) {
             return null;
         }

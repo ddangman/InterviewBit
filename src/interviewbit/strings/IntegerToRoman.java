@@ -23,13 +23,13 @@ public class IntegerToRoman {
         int t = a / 10;
         sb.append(getTens(t));
         a -= t * 10;
-        
+
         sb.append(getSingle(a));
-        
+
         return sb.toString();
     }
 
-    public String getThousands(int m) {
+    private String getThousands(int m) {
         switch (m) {
             case (1):
                 return "M";
@@ -41,7 +41,7 @@ public class IntegerToRoman {
         return "";
     }
 
-    public String getHundreds(int h) {
+    private String getHundreds(int h) {
         switch (h) {
             case (1):
                 return "C";
@@ -65,7 +65,7 @@ public class IntegerToRoman {
         return "";
     }
 
-    public String getTens(int t) {
+    private String getTens(int t) {
         switch (t) {
             case (1):
                 return "X";
@@ -88,9 +88,9 @@ public class IntegerToRoman {
         }
         return "";
     }
-    
-    public String getSingle(int s) {
-            switch (s) {
+
+    private String getSingle(int s) {
+        switch (s) {
             case (1):
                 return "I";
             case (2):
@@ -110,6 +110,6 @@ public class IntegerToRoman {
             case (9):
                 return "IX";
         }
-        return "";    
+        return "";
     }
 }

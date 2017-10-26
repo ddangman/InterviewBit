@@ -40,7 +40,7 @@ public class MedianOfArray {
             if (count >= half) {
                 // change ceiling to find possible lower median
                 max = median;
-                if (findMedian(a, median) || findMedian(b, median)) {
+                if (getMedian(a, median) || getMedian(b, median)) {
                     // median is in array
                     if (median < lowestMedian) {
                         // save lowest median
@@ -61,7 +61,7 @@ public class MedianOfArray {
             }
             int next = lowestMedian + 1;
             while (next <= fixedMax) {
-                if (findMedian(a, next) || findMedian(b, next)) {
+                if (getMedian(a, next) || getMedian(b, next)) {
                     trueMedian = lowestMedian + ((next - lowestMedian) / 2.0);
                     break;
                 } else {
@@ -73,7 +73,7 @@ public class MedianOfArray {
         return trueMedian;
     }
 
-    public double singleMedian(final List<Integer> list) {
+    private double singleMedian(final List<Integer> list) {
         int half = list.size() / 2;
         if (list.size() % 2 == 1) {
             return list.get(half);
@@ -82,7 +82,7 @@ public class MedianOfArray {
         }
     }
 
-    public int lessOrEqualCount(List<Integer> arr, int key) {
+    private int lessOrEqualCount(List<Integer> arr, int key) {
         int start = 0;
         int end = arr.size() - 1;
         int mid = 0;
@@ -104,7 +104,7 @@ public class MedianOfArray {
         }
     }
 
-    public boolean findMedian(List<Integer> arr, int key) {
+    private boolean getMedian(List<Integer> arr, int key) {
         int start = 0;
         int end = arr.size() - 1;
         int mid = 0;
@@ -122,7 +122,7 @@ public class MedianOfArray {
         return false;
     }
 
-    public boolean hasDuplicate(int key, final List<Integer>... lists) {
+    private boolean hasDuplicate(int key, final List<Integer>... lists) {
         boolean foundSingle = false;
         for (List<Integer> l : lists) {
             int start = 0;

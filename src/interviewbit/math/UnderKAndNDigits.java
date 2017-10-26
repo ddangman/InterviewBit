@@ -48,7 +48,7 @@ public class UnderKAndNDigits {
         return recursionCalculator(0, digits, remSlots, A, ca, el);
     }
 
-    public int recursionCalculator(int index, int digits, int remSlots, ArrayList<Integer> A, ArrayList<Integer> ca, ArrayList<Integer> el) {
+    private int recursionCalculator(int index, int digits, int remSlots, ArrayList<Integer> A, ArrayList<Integer> ca, ArrayList<Integer> el) {
         //base case
         if (remSlots < 0) {
             return 0;
@@ -63,7 +63,7 @@ public class UnderKAndNDigits {
         }
     }
 
-    public int binSearchLessThan(ArrayList<Integer> inputArr, int key) {
+    private int binSearchLessThan(ArrayList<Integer> inputArr, int key) {
         int start = 0;
         int end = inputArr.size() - 1;
         while (start <= end) {
@@ -91,7 +91,7 @@ public class UnderKAndNDigits {
         return 0;
     }
 
-    public int binarySearch(ArrayList<Integer> inputArr, int key) {
+    private int binarySearch(ArrayList<Integer> inputArr, int key) {
 
         int start = 0;
         int end = inputArr.size() - 1;
@@ -109,7 +109,7 @@ public class UnderKAndNDigits {
         return -1;
     }
 
-    public static ArrayList<Integer> intToArray(int i) {
+    private ArrayList<Integer> intToArray(int i) {
         int temp = i;
         ArrayList<Integer> array = new ArrayList<Integer>();
         do {

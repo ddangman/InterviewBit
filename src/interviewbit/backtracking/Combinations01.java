@@ -13,8 +13,8 @@ import java.util.HashSet;
  */
 public class Combinations01 {
 
-    ArrayList<Integer> input;
-    ArrayList<ArrayList<Integer>> allCombo;
+    private ArrayList<Integer> input;
+    private ArrayList<ArrayList<Integer>> allCombo;
 
     public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> a, int b) {
         allCombo = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Combinations01 {
         return allCombo;
     }
 
-    public void findCombo(int index, int target, ArrayList<Integer> build) {
+    private void findCombo(int index, int target, ArrayList<Integer> build) {
         if (target < 0) {
             return;
         }
@@ -51,9 +51,9 @@ public class Combinations01 {
 
     class HashSolution {
 
-        HashSet<ArrayList<Integer>> hs;
-        ArrayList<Integer> input;
-        int target;
+        private HashSet<ArrayList<Integer>> hs;
+        private ArrayList<Integer> input;
+        private int target;
 
         public ArrayList<ArrayList<Integer>> combinationSum(ArrayList<Integer> a, int b) {
             Collections.sort(a);
@@ -70,7 +70,7 @@ public class Combinations01 {
             return allCombo;
         }
 
-        public void findCombo(int index, int sum, ArrayList<Integer> build) {
+        private void findCombo(int index, int sum, ArrayList<Integer> build) {
             if (sum > target || index >= input.size()) {
                 return;
             } else if (sum == target) {

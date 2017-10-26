@@ -12,7 +12,7 @@ import java.math.BigInteger;
  */
 public class SumRootToLeafNumbers {
 
-    BigInteger sum;
+    private BigInteger sum;
 
     public int sumNumbers(TreeNode root) {
         sum = BigInteger.ZERO;
@@ -23,7 +23,7 @@ public class SumRootToLeafNumbers {
         return mod.intValue();
     }
     
-    public void addNodes(TreeNode node, StringBuilder sb) {
+    private void addNodes(TreeNode node, StringBuilder sb) {
         if (node == null) { // exit condition
             return;
         }     

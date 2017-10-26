@@ -27,7 +27,7 @@ public class PowerOfTwoInt {
         return false;
     }
 
-    public static int floorSqrt(int x) {
+    private static int floorSqrt(int x) {
         // Base Cases
         if (x == 0 || x == 1) {
             return x;

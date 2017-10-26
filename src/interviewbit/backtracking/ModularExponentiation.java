@@ -9,7 +9,7 @@ package interviewbit.backtracking;
  */
 public class ModularExponentiation {
 
-    public int Mod(int a, int b, int c) {
+    public static int Mod(int a, int b, int c) {
         if (b == 0) {
             if (a == 0) {
                 return 0;

@@ -33,7 +33,7 @@ public class DifferentBitsSumPairwise {
         return (int) res % 1000000007;
     }
     
-    public long modularMultiplication(long a, long b, long mod) {
+    private long modularMultiplication(long a, long b, long mod) {
         long res = 0;
         a %= mod;
         while (b > 0) {

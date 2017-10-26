@@ -9,16 +9,16 @@ package interviewbit.heapmap;
  */
 public class WaysToFormMaxHeap {
 
-    long[] dp;
+    private long[] dp;
     /* dp[i] = number of max heaps for i distinct integers */
-    long[][] nck;
+    private long[][] nck;
     /* nck[i][j] = i choose j if i>=j else 0 */
-    int[] log2;
+    private int[] log2;
     /* log2[i] = int(log base 2 of i) */
 
-    final long MOD = 1000000007;
+    private final long MOD = 1000000007;
 
-    public long choose(int n, int k) {
+    private long choose(int n, int k) {
         if (k > n) {
             return 0;
         }
@@ -38,7 +38,7 @@ public class WaysToFormMaxHeap {
         return answer;
     }
 
-    public int getL(int n) {
+    private int getL(int n) {
         if (n == 1) {
             return 0;
         }
@@ -80,7 +80,7 @@ public class WaysToFormMaxHeap {
         return (int) getNumberOfMaxHeaps(n);
     }
 
-    public long getNumberOfMaxHeaps(int n) {
+    private long getNumberOfMaxHeaps(int n) {
         if (n <= 1) {
             return 1;
         }

@@ -22,7 +22,7 @@ public class LargestCoprimeDivisor {
         return 1;
     }
 
-    public int gcd(int a, int b) {
+    private int gcd(int a, int b) {
         if (b == 0) {
             return a;
         }

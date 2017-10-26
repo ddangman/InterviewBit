@@ -9,7 +9,7 @@ package interviewbit.dynamicprogramming;
  */
 public class PalindromePartitioning {
 
-    String input;
+    private String input;
 
     public int minCut(String input) {
         this.input = input;

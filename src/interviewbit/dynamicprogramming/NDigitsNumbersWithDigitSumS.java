@@ -34,11 +34,11 @@ public class NDigitsNumbersWithDigitSumS {
         return dp[digit][sum];
     }
 
-    class RecursionSolution {
+    public class RecursionSolution {
 
-        int[][] dp;
-        long total;
-        int mod = 1000000007;
+        private int[][] dp;
+        private long total;
+        private int mod = 1000000007;
 
         // permutation equation
         // sum * (sum + n-2)! / sum! * (n-1)!
@@ -62,7 +62,7 @@ public class NDigitsNumbersWithDigitSumS {
             return (int) total;
         }
 
-        public int solveRecursion(int n, int sum) {
+        private int solveRecursion(int n, int sum) {
             // base case
             if (n == 0) {
                 return sum == 0 ? 1 : 0;

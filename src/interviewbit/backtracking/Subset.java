@@ -12,9 +12,9 @@ import java.util.Collections;
  */
 public class Subset {
 
-    ArrayList<ArrayList<Integer>> allCombos;
-    ArrayList<Integer> input;
-    int n;
+    private ArrayList<ArrayList<Integer>> allCombos;
+    private ArrayList<Integer> input;
+    private int n;
 
     public ArrayList<ArrayList<Integer>> subsets(ArrayList<Integer> a) {
         Collections.sort(a);
@@ -51,7 +51,7 @@ public class Subset {
         return allCombos;
     }
 
-    public void findSubsets(int i, ArrayList<Integer> build) {
+    private void findSubsets(int i, ArrayList<Integer> build) {
         if (i == n) {
             allCombos.add(new ArrayList<>(build));
             return;

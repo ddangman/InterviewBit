@@ -130,7 +130,7 @@ public class OrderOfPeopleHeights {
         }
     }
 
-    class SegmentTreeSolution {
+    public class SegmentTreeSolution {
 
         public ArrayList<Integer> order(ArrayList<Integer> heights, ArrayList<Integer> infronts) {
 
@@ -167,7 +167,7 @@ public class OrderOfPeopleHeights {
             return order;
         }
 
-        public int getIth(Bit bit, int index, int n) {
+        private int getIth(Bit bit, int index, int n) {
 
             int start = 1;
             int end = n;
@@ -197,7 +197,7 @@ public class OrderOfPeopleHeights {
             return res - 1;
         }
 
-        class Node implements Comparable<Node> {
+        private class Node implements Comparable<Node> {
 
             int height;
             int infronts;
@@ -213,7 +213,7 @@ public class OrderOfPeopleHeights {
             }
         }
 
-        class Bit {
+        private class Bit {
 
             int bit[];
             int N;

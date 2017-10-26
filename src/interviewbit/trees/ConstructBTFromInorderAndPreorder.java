@@ -12,9 +12,9 @@ import java.util.ArrayList;
  */
 public class ConstructBTFromInorderAndPreorder {
 
-    ArrayList<Integer> preorder;
-    ArrayList<Integer> inorder;
-    int pri; // preorder root index
+    private ArrayList<Integer> preorder;
+    private ArrayList<Integer> inorder;
+    private int pri; // preorder root index
 
     public TreeNode buildTree(ArrayList<Integer> preorder, ArrayList<Integer> inorder) {
         this.inorder = inorder;

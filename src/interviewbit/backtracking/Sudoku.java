@@ -11,8 +11,8 @@ import java.util.ArrayList;
  */
 public class Sudoku {
 
-    int[][] matrix;
-    ArrayList<ArrayList<Character>> a;
+    private int[][] matrix;
+    private ArrayList<ArrayList<Character>> a;
 
     public void solveSudoku(ArrayList<ArrayList<Character>> a) {
         // initialize matrix
@@ -29,7 +29,7 @@ public class Sudoku {
 
     }
 
-    public boolean solve(int row, int col) {
+    private boolean solve(int row, int col) {
         // find square to solve
         while (col < 9 && row < 9 && matrix[row][col] > 0) {
             if (col == 8) {
@@ -62,7 +62,7 @@ public class Sudoku {
         return false;
     }
 
-    public boolean isLegal(int row, int col, int n) {
+    private boolean isLegal(int row, int col, int n) {
         for (int i = 0; i < 9; i++) {
             if (matrix[row][i] == n) {
                 return false;
@@ -74,7 +74,7 @@ public class Sudoku {
         return checkSquare(row, col, n);
     }
 
-    public boolean checkSquare(int row, int col, int n) {
+    private boolean checkSquare(int row, int col, int n) {
         int r = row / 3;
         int c = col / 3;
         int rs = r * 3;
