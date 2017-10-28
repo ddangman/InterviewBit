@@ -24,7 +24,7 @@ public class ValidPath {
 
     public String solve(int A, int B, int C, int D, ArrayList<Integer> E, ArrayList<Integer> F) {
         init(A, B, C, D, E, F);
-        int R = D * D * 4; // R = c^2. c = 2r
+        int Rsqr = D * D * 4; // R = c^2. c = 2r
 
         for (int i = 0; i < n; i++) {
             int x1 = X.get(i);
@@ -37,7 +37,7 @@ public class ValidPath {
                 int dy = y2 - y1; // difference y
                 // two circles belong in same set if their centers are less than
                 // 2R apart. Determined by: a^2 + b^2 = c^2
-                if (dx * dx + dy * dy <= R) {
+                if (dx * dx + dy * dy <= Rsqr) {
                     union(i, j);
                 }
             }
@@ -62,10 +62,9 @@ public class ValidPath {
 
     private boolean isBlocked(int set) {
         // initialize values opposite limit
-        int up = Integer.MIN_VALUE;
-        int down = Integer.MAX_VALUE;
-        int right = Integer.MIN_VALUE;
-        int left = Integer.MAX_VALUE;
+        int up, down, left, right;
+        down = left = Integer.MAX_VALUE;
+        up = right = Integer.MIN_VALUE;
 //        int up = -1;
 //        int down = Y;
 //        int left = X;
@@ -115,12 +114,12 @@ public class ValidPath {
     }
 
     // representative should point to self or recurse until self
-    private int getRep(int r) {
-        if (rep[r] != r) {
+    private int getRep(int i) {
+        if (rep[i] != i) {
             // traverse up parent and compress path through recursion
-            rep[r] = getRep(rep[r]);
+            rep[i] = getRep(rep[i]);
         }
-        return rep[r];
+        return rep[i];
     }
 
     private void union(int i, int j) {

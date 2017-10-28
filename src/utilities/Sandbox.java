@@ -7,6 +7,7 @@ package utilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  *
@@ -14,93 +15,68 @@ import java.util.Collections;
  */
 public class Sandbox {
 
-    private ArrayList<Integer> index;
-    private int n, sum;
-    private ArrayList<Integer> sorted;
-    private ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-    private int[][][] dp; // index, sum, size
-
-    public ArrayList<ArrayList<Integer>> avgset(ArrayList<Integer> a) {
-        if (a == null || a.isEmpty()) {
-            return res;
+    public String multiple(int n) {
+        if (n == 1) {
+            return "1";
         }
-        init(a);
+        if (n == 0) {
+            return "0";
+        }
+        boolean[] isVisited = new boolean[n];
+        LinkedList<Node> q = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
 
-        for (int sz = 1; sz < n; sz++) {
-            int ss = sz * sum;
-            if (ss % n != 0) {
-                continue;
-            }
+        int now = 1 % n;
+        Node root = new Node(now == 1, now, null);
+        isVisited[now] = true;
+        q.add(root);
 
-            int sm = ss / n;
-            if (isPossible(0, sm, sz)) {
-                generateRes();
+        while (!q.isEmpty()) {
+            Node pop = q.pop();
+
+            // add 0
+            int addZero = pop.mod * 10 % n;
+            if (addZero == 0) {
+                root = pop;
+                sb.append('0');
                 break;
+            } else if (!isVisited[addZero]) {
+                isVisited[addZero] = true;
+                q.add(new Node(false, addZero, pop));
             }
-        }
 
-        return res;
-    }
-
-    private boolean isPossible(int i, int sm, int sz) {
-        if (sz == 0) {
-            return sm == 0;
-        }
-        if (i >= n) {
-            return false;
-        }
-        if (dp[i][sm][sz] != 0) {
-            return dp[i][sm][sz] == 1;
-        }
-
-        // recursion using element
-        int element = sorted.get(i);
-        if (sm >= element) {
-            index.add(i);
-            if (isPossible(i + 1, sm - element, sz - 1)) {
-                dp[i][sm][sz] = 1;
-                return true;
+            // add 1
+            int addOne = (addZero + 1) % n;
+            if (addOne == 0) {
+                root = pop;
+                sb.append('1');
+                break;
+            } else if (!isVisited[addOne]) {
+                isVisited[addOne] = true;
+                q.add(new Node(true, addOne, pop));
             }
-            index.remove(index.size() - 1);
-        }
 
-        // recursion without element
-        if (isPossible(i + 1, sm, sz)) {
-            dp[i][sm][sz] = 1;
-            return true;
         }
-
-        dp[i][sm][sz] = -1;
-        return false;
+        
+        while (root != null) {
+            sb.append(root.isOne ? 1 : 0);
+            root = root.parent;
+        }
+        
+        return sb.reverse().toString();
     }
 
-    private void generateRes() {
-        ArrayList<Integer> a = new ArrayList<>();
-        ArrayList<Integer> b = new ArrayList<>();
+    private class Node {
 
-        int ptr = 0;
-        for (int i = 0; i < n; i++) {
-            if (ptr < index.size() && i == index.get(ptr)) {
-                a.add(sorted.get(i));
-                ptr++;
-            } else {
-                b.add(sorted.get(i));
-            }
+        boolean isOne;
+        int mod;
+        Node parent;
+
+        Node(boolean one, int md, Node par) {
+            this.isOne = one;
+            this.mod = md;
+            this.parent = par;
         }
-
-        res.add(a);
-        res.add(b);
     }
 
-    private void init(ArrayList<Integer> a) {
-        this.index = new ArrayList<Integer>();
-        this.n = a.size();
-        Collections.sort(a);
-        this.sorted = a;
-        for (int i : sorted) {
-            sum += i;
-        }
-        this.dp = new int[n][sum][n];
-
-    }
 }
