@@ -9,85 +9,71 @@ package interviewbit.math;
  */
 public class SortedPermutationRankRepeats {
 
-    public int rankPerm(String perm) {
-        long rank = 1;
-        long suffixPermCount = 1;
-        java.util.Map<Character, Integer> charCounts
-                = new java.util.HashMap<Character, Integer>();
-        for (int i = perm.length() - 1; i > -1; i--) {
-            char x = perm.charAt(i); // current char
-            // count of char from index to end
-            int xCount = charCounts.containsKey(x) ? charCounts.get(x) + 1 : 1;
-            charCounts.put(x, xCount);
-            // go through character map
-            for (java.util.Map.Entry<Character, Integer> e : charCounts.entrySet()) {
-                if (e.getKey() < x) { // keyChar comes before currentChar
-                    // add suffixPermCount for every char before current
-                    // e.getValue is multiplier for repeated characters
-                    // div by xCount if currentChar is repeated
-                    //  otherwise 1 changes nothing
-                    rank += suffixPermCount * e.getValue() / xCount;
+    private static final int M = 1000003;
+
+    public int findRank(String a) {
+        int n = a.length();
+        long[] facts = new long[n + 1];
+        long[] infacts = new long[n + 1];
+        facts[0] = infacts[0] = 1;
+        for (int i = 1; i <= n; i++) {
+            facts[i] = (facts[i - 1] * i) % M;
+            infacts[i] = modExp(facts[i], M - 2);
+            //System.out.println(i + " " + facts[i] + " " + infacts[i]);
+        }
+
+        int[] c = new int[52];
+        for (char ch : a.toCharArray()) {
+            c[o(ch)]++;
+        }
+
+        long rank = 0;
+        int count = a.length();
+        for (char ch : a.toCharArray()) {
+            count--;
+            for (int t = 0; t < o(ch); t++) {
+                if (c[t] > 0) {
+                    c[t]--;
+                    long trank = facts[count];
+                    //System.out.println("t" + trank);
+                    for (int i = 0; i < 52; i++) {
+                        if (c[i] > 0) {
+                            trank = (trank * infacts[c[i]]) % M;
+                            //System.out.println("t" + trank);
+                        }
+                    }
+                    rank = (rank + trank) % M;
+                    //System.out.println("r" + rank);
+                    c[t]++;
                 }
             }
-            // multiply by length to increase permutation factorial
-            suffixPermCount *= perm.length() - i;
-            // divide by repeatedChar!
-            suffixPermCount /= xCount;
-
+            c[o(ch)]--;
         }
-        return (int) rank;
+        return new Long((rank + 1) % M).intValue();
     }
 
-    public int rankPermPrint(String perm) {
-        long rank = 1;
-        long suffixPermCount = 1;
-        java.util.Map<Character, Integer> charCounts
-                = new java.util.HashMap<Character, Integer>();
-        for (int i = perm.length() - 1; i > -1; i--) {
-            char x = perm.charAt(i); // current char
-            int l = perm.length() - i;
-            System.out.print("Length: " + l + " char: ");
-            System.out.println(x);
-            // count of char from index to end
-            int xCount = charCounts.containsKey(x) ? charCounts.get(x) + 1 : 1;
-            charCounts.put(x, xCount);
-            // go through character map
-            for (java.util.Map.Entry<Character, Integer> e : charCounts.entrySet()) {
-                if (e.getKey() < x) { // keyChar comes before currentChar
-                    long fact = suffixPermCount * e.getValue() / xCount;
-                    System.out.println(e.getKey() + " " + fact);
-                    rank += fact;
-                }
-            }
-            suffixPermCount *= perm.length() - i;
-            suffixPermCount /= xCount;
-
+    private int o(char ch) {
+        if (ch <= 'Z') {
+            return ch - 'A';
         }
-        return (int) rank;
+        return ch - 'a' + 26;
     }
 
-    public int rankPermModular(String perm) {
-        long rank = 1;
-        long suffixPermCount = 1;
-        java.util.Map<Character, Integer> charCounts
-                = new java.util.HashMap<Character, Integer>();
-        for (int i = perm.length() - 1; i > -1; i--) {
-            char x = perm.charAt(i); // current char
-            // count of char from index to end
-            int xCount = charCounts.containsKey(x) ? charCounts.get(x) + 1 : 1;
-            charCounts.put(x, xCount);
-            // go through character map
-            for (java.util.Map.Entry<Character, Integer> e : charCounts.entrySet()) {
-                if (e.getKey() < x) { 
-                    rank += suffixPermCount * e.getValue() / xCount;
-                }
+    public long modExp(long xint, long yint) {
+        long res = 1;
+        long x = xint;
+        long y = yint;
+        //System.out.println("Exp " + x + " " + y + " " + res);
+        while (y > 0) {
+            if ((y & 1) == 1) {
+                res = (res * x) % M;
             }
-            
-            suffixPermCount *= perm.length() - i;
-            suffixPermCount /= xCount;
-
+            x = (x * x) % M;
+            y >>= 1;
+            //System.out.println("Exp " + x + " " + y + " " + res);
         }
-        return (int) rank;
+        //return new Long(res).intValue();
+        return res;
     }
 
 }

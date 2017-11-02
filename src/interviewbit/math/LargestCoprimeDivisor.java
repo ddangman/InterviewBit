@@ -11,15 +11,18 @@ import java.util.TreeSet;
  */
 public class LargestCoprimeDivisor {
 
-    public int cpFact(int A, int B) {
-        TreeSet<Integer> ts = primeFactors(A);
-        while (!ts.isEmpty()) {
-            int m = ts.pollLast();
-            if (gcd(m, B) == 1) {
-                return m;
+    public int cpFact(int a, int b) {
+        for (int i = a; i >= 1;) {
+            if (a % i == 0) {
+                if (gcd(i, b) == 1) {
+                    return i;
+                }
+                i = i / gcd(i, b);
+            } else {
+                i--;
             }
         }
-        return 1;
+        return 0;
     }
 
     private int gcd(int a, int b) {
@@ -31,8 +34,8 @@ public class LargestCoprimeDivisor {
 
     // A function to find all prime factors
     // of a given number n
-    public static TreeSet<Integer> primeFactors(int n) {
-        int sqrt = (int) Math.sqrt(n);        
+    private static TreeSet<Integer> primeFactors(int n) {
+
         TreeSet<Integer> ts = new TreeSet<>();
         ts.add(n);
         // Print the number of 2s that divide n
@@ -41,7 +44,7 @@ public class LargestCoprimeDivisor {
             ts.add(2);
             ts.add(n);
         }
-
+        int sqrt = (int) Math.sqrt(n);
 
         // n must be odd at this point.  So we can
         // skip one element (Note i = i +2)
