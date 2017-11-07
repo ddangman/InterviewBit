@@ -9,6 +9,6 @@ public class InterviewBit {
 
     public static void main(String[] args) {
 
-    }
-    
+}
+
 }
